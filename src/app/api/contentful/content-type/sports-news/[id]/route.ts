@@ -6,9 +6,9 @@ export async function GET(
 ) {
   const { id } = await params;
   const res = await contentfulClient.getEntry(id);
-  const filteredItem = {
-    id: res.sys.id,
-    fields: res.fields,
-  };
+  // const filteredItem = {
+  //   id: res.sys.id,
+  //   fields: res.fields,
+  // };
   return Response.json(res);
 }

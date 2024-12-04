@@ -1,17 +1,15 @@
 import React from "react";
-import { ModeToggle } from "../theme/ModeToggle";
-import { CircleUserRound, Menu } from "lucide-react";
+import { CircleUserRound } from "lucide-react";
 import Link from "next/link";
-import TopHeaderDropdown from "./TopHeaderDropdown";
 
 const Header = () => {
   return (
     <header>
       {/* Top Header */}
-      <div className="text-md bg-[#1D4A90] px-1 font-poppins text-white " >
+      <div className="text-md bg-[#1D4A90] px-1 font-poppins text-white">
         {/* container mx-auto flex justify-end py-1 space-x-3 px-1 */}
 
-        <div className="container font-bold text-lg mx-auto flex justify-end space-x-3 px-1 py-1">
+        <div className="container mx-auto flex justify-end space-x-3 px-1 py-1 text-lg font-bold">
           <Link
             href="/work-with-us"
             className="hidden hover:underline sm:block"
@@ -35,8 +33,10 @@ const Header = () => {
       {/* Main Header */}
       <div className="bg-[#288BDE] px-1 py-6 font-noto_serif text-white">
         <div className="container mx-auto">
-          <h1 className="lg:text-8xl md:text-6xl text-5xl font-bold">THE GUARDIAN</h1>
-          <p className="text-2xl ">OGAT NEWS SERVICE</p>
+          <h1 className="text-5xl font-bold md:text-6xl lg:text-8xl">
+            THE GUARDIAN
+          </h1>
+          <p className="text-2xl">OGAT NEWS SERVICE</p>
         </div>
       </div>
     </header>

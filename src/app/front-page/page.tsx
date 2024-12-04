@@ -2,7 +2,6 @@ import React from "react";
 import Headlines from "./Headlines";
 import { getMinimalNormalNews } from "@/lib/dataFetcher";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
-import { newsDataType } from "@/types/contentful";
 import { sortedDateLatestFirst } from "@/lib/utils";
 import SubHeadlines from "./SubHeadlines";
 import OgatHeadlines from "./OgatHeadlines";

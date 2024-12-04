@@ -1,4 +1,3 @@
-import HorizontalArticleCard from "@/components/news-cards/HorizontalArticleCard";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
 import { newsDataType } from "@/types/contentful";
 import React from "react";

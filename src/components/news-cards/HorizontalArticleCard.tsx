@@ -1,6 +1,5 @@
 import { formatDate } from "@/lib/utils";
 import { newsDataType } from "@/types/contentful";
-import Image from "next/image";
 import React from "react";
 
 interface HorizontalArticleCardProps {
