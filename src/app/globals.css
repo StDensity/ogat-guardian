@@ -82,3 +82,7 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
   }
 }
+
+body {
+  background-color: #f9fafb;
+}

@@ -1,4 +1,4 @@
-import { authorType, newsCategoryType } from "@/types/contentful";
+import { authorType, newsCategoryType, newsDataType } from "@/types/contentful";
 
 const BASE_URL = "http://localhost:3000/api/contentful";
 
@@ -46,7 +46,7 @@ export const getAuthorById = async (id: string): Promise<authorType> => {
 /**
  * Fetch all normal news.
  */
-export const getAllNormalNews = async () => {
+export const getMinimalNormalNews = async (): Promise<newsDataType[]> => {
   const response = await fetch(`${BASE_URL}/content-type/normal-news`);
   if (!response.ok) throw new Error("Failed to fetch normal news");
   return response.json();

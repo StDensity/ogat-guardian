@@ -11,7 +11,6 @@ export async function GET() {
     const categoryDetails = item.fields.category as Entry[];
     const imageDetails = (item.fields.images ?? []) as Asset[];
 
-
     return {
       id: item.sys.id,
       fields: {
@@ -46,6 +45,10 @@ export async function GET() {
               description: data.fields.description,
               fileName: data.fields.file?.fileName,
               url: `https:${data.fields.file?.url}`,
+              // @ts-ignore
+              width: imageDetails[0].fields.file?.details?.width ?? 0,
+              // @ts-ignore
+              height: imageDetails[0].fields.file?.details?.height ?? 0,
             },
           };
         }),

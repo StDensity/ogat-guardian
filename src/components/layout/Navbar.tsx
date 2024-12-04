@@ -10,7 +10,7 @@ const Navbar = async () => {
       <div className="flex h-full justify-between divide-x divide-white">
         {data.map((item) => (
           <div
-            className="group relative w-full px-5 pt-2 text-center text-2xl text-white font-noto_serif"
+            className="group relative w-full pr-5 pl-1 pt-2 pb-1  text-3xl font-bold text-start text-white font-noto_serif"
             key={item.fields.id}
           >
             <div
@@ -30,7 +30,7 @@ const Navbar = async () => {
         <div className="scrollbar-hidden container mx-auto overflow-x-scroll">
           {renderBigScreenNavBar()}
         </div>
-        <Input className="m-1 ml-2 max-w-44 rounded-none bg-white focus-visible:outline-none focus-visible:ring-0" />
+        <Input className="m-1 ml-2 max-w-52 rounded-none h-10 bg-white focus-visible:outline-none focus-visible:ring-0" />
       </div>
     </div>
   );
