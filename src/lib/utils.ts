@@ -20,8 +20,7 @@ export function formatDate(dateString: string): string {
 
 export const sortedDateLatestFirst = (data: newsDataType[]) => {
   data.sort((a, b) => {
-    // @ts-expect-error
-    return new Date(a.fields.date) - new Date(b.fields.date);
+    return new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime();
   });
   return data.reverse();
 };

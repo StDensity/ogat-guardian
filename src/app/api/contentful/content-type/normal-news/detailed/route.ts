@@ -1,4 +1,4 @@
-import { Asset, Entry } from "contentful";
+import { Asset, AssetDetails, Entry } from "contentful";
 import { contentfulClient } from "../../../client";
 
 export async function GET() {
@@ -45,10 +45,12 @@ export async function GET() {
               description: data.fields.description,
               fileName: data.fields.file?.fileName,
               url: `https:${data.fields.file?.url}`,
-              // @ts-expect-error
-              width: imageDetails[0].fields.file?.details?.width ?? 0,
-              // @ts-expect-error
-              height: imageDetails[0].fields.file?.details?.height ?? 0,
+              width:
+                (imageDetails[0].fields.file?.details as AssetDetails)?.image
+                  ?.width ?? 0,
+              height:
+                (imageDetails[0].fields.file?.details as AssetDetails)?.image
+                  ?.width ?? 0,
             },
           };
         }),

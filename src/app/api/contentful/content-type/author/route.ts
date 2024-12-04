@@ -12,8 +12,7 @@ export async function GET() {
         name: item.fields.name,
         avatarId: (item.fields.avatar as Asset).sys.id || null,
         avatarUrl: item.fields.avatar
-          ? // @ts-expect-error
-            `https:${item.fields.avatar.fields.file.url}`
+          ? `https:${(item.fields.avatar as Asset).fields.file?.url}`
           : null,
         avatarTitle: (item.fields.avatar as Asset).fields.title || null,
       },
