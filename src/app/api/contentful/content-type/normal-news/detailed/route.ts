@@ -45,9 +45,9 @@ export async function GET() {
               description: data.fields.description,
               fileName: data.fields.file?.fileName,
               url: `https:${data.fields.file?.url}`,
-              // @ts-ignore
+              // @ts-expect-error
               width: imageDetails[0].fields.file?.details?.width ?? 0,
-              // @ts-ignore
+              // @ts-expect-error
               height: imageDetails[0].fields.file?.details?.height ?? 0,
             },
           };

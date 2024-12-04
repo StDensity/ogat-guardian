@@ -14,7 +14,7 @@ export async function GET(
       name: res.fields.name,
       avatarId: (res.fields.avatar as Asset).sys.id || null,
       avatarUrl: res.fields.avatar
-        ? // @ts-ignore
+        ? // @ts-expect-error
           `https:${res.fields.avatar.fields.file.url}`
         : null,
       avatarTitle: (res.fields.avatar as Asset).fields.title || null,
