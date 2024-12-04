@@ -1,4 +1,4 @@
-import { contentfulClient } from "@/lib/utils";
+import { contentfulClient } from "../../client";
 
 export async function GET() {
   const res = await contentfulClient.getEntries({

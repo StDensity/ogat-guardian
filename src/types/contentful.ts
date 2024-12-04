@@ -9,14 +9,15 @@ export interface newsCategoryFieldsType {
   color: string;
 }
 
-export interface authorCategoryType {
+export interface authorType {
   id: string;
-  fields: authorCategoryFieldsType;
+  fields: authorFieldsType;
 }
 
-export interface authorCategoryFieldsType {
+export interface authorFieldsType {
   id: number;
   name: string;
   avatarId: string;
   avatarUrl: string;
 }
+

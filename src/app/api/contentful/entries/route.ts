@@ -1,4 +1,4 @@
-import { contentfulClient } from "@/lib/utils";
+import { contentfulClient } from "../client";
 
 export async function GET() {
   const res = await contentfulClient.getEntries({
@@ -6,7 +6,8 @@ export async function GET() {
   });
   const filteredItems = res.items.map((item) => ({
     id: item.sys.id,
-    fields: item.fields
+    fields: item.fields,
   }));
   return Response.json(filteredItems);
 }
+

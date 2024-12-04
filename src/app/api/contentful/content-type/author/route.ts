@@ -1,12 +1,10 @@
-import { contentfulClient } from "@/lib/utils";
 import { Asset } from "contentful";
+import { contentfulClient } from "../../client";
 export async function GET() {
   const res = await contentfulClient.getEntries({
     content_type: "author",
   });
-  console.log(res);
   const filteredItems = res.items.map((item) => {
-    const avatarId = (item.fields.avatar as Asset) || null;
     return {
       id: item.sys.id,
       fields: {
@@ -17,6 +15,7 @@ export async function GET() {
           ? // @ts-ignore
             `https:${item.fields.avatar.fields.file.url}`
           : null,
+        avatarTitle: (item.fields.avatar as Asset).fields.title || null,
       },
     };
   });

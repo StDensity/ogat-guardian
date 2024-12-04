@@ -11,17 +11,14 @@ const Header = () => {
       <div className="text-md bg-[#1D4A90] px-1 font-poppins text-white">
         {/* container mx-auto flex justify-end py-1 space-x-3 px-1 */}
 
-        {/* Small screen */}
-
-        <div className="flex justify-end py-1 sm:hidden">
-          <TopHeaderDropdown />
-        </div>
-
-        <div className="container mx-auto hidden justify-end space-x-3 px-1 py-1 sm:flex">
-          <Link href="/work-with-us" className="hover:underline">
+        <div className="container mx-auto flex justify-end space-x-3 px-1 py-1">
+          <Link
+            href="/work-with-us"
+            className="hidden hover:underline sm:block"
+          >
             WORK WITH US
           </Link>
-          <span>|</span>
+          <span className="hidden sm:block">|</span>
           <Link href="/subscribe" className="hover:underline">
             SUBSCRIBE
           </Link>
