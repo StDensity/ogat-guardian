@@ -11,7 +11,6 @@ const FrontPage = async () => {
   const data = await getMinimalNormalNews();
 
   const latestFirstData = sortedDateLatestFirst(data);
-  console.log(latestFirstData.slice(13, 19))
   return (
     <section className="container mx-auto min-h-[80vh]">
       <div className="md:hidden">

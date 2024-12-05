@@ -48,16 +48,63 @@ export interface newsDataType {
         color: string;
       };
     }[];
-    images: {
+    images: newsImagesType;
+  };
+}
+
+export interface newsImagesType {
+  id: string;
+  fields: {
+    title: string;
+    description: string;
+    fileName: string;
+    url: string;
+    width: number;
+    height: number;
+  };
+}
+
+export interface newsDataDetailedType {
+  id: string;
+  fields: {
+    newsTitle: string;
+    id: number;
+    date: string;
+    summary: string;
+    author: {
       id: string;
       fields: {
-        title: string;
-        description: string;
-        fileName: string;
-        url: string;
-        width: number;
-        height: number;
+        id: number;
+        name: string;
+        avatar: {
+          id: string;
+          title: string;
+          url: string;
+        };
       };
     };
+    category: {
+      id: string;
+      fields: {
+        id: number;
+        name: string;
+        color: string;
+      };
+    }[];
+    body: {
+      data: {};
+      content: {
+        data: {};
+        content: {
+          data: {};
+          marks: any[];
+          value: string;
+          nodeType: string;
+        }[];
+        nodeType: string;
+      }[];
+      nodeType: string;
+    };
+    images: newsImagesType[];
   };
 }

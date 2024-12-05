@@ -20,7 +20,16 @@ export function formatDate(dateString: string): string {
 
 export const sortedDateLatestFirst = (data: newsDataType[]) => {
   data.sort((a, b) => {
-    return new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime();
+    return (
+      new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime()
+    );
   });
   return data.reverse();
 };
+
+export function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((word) => word[0].toUpperCase())
+    .join("");
+}

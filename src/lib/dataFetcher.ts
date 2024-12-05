@@ -1,4 +1,9 @@
-import { authorType, newsCategoryType, newsDataType } from "@/types/contentful";
+import {
+  authorType,
+  newsCategoryType,
+  newsDataDetailedType,
+  newsDataType,
+} from "@/types/contentful";
 
 const BASE_URL = "http://localhost:3000/api/contentful";
 
@@ -48,6 +53,14 @@ export const getAuthorById = async (id: string): Promise<authorType> => {
  */
 export const getMinimalNormalNews = async (): Promise<newsDataType[]> => {
   const response = await fetch(`${BASE_URL}/content-type/normal-news`);
+  if (!response.ok) throw new Error("Failed to fetch normal news");
+  return response.json();
+};
+
+export const getDetailedNormalNewsById = async (
+  id: string,
+): Promise<newsDataDetailedType> => {
+  const response = await fetch(`${BASE_URL}/content-type/normal-news/${id}`);
   if (!response.ok) throw new Error("Failed to fetch normal news");
   return response.json();
 };

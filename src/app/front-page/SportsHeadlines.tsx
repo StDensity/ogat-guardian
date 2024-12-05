@@ -22,6 +22,7 @@ const SportsHeadlines = (props: SportsHeadlinesProps) => {
       </div>
       <div className="flex-1 basis-3/12">
         <VerticalArticleCard newsData={props.newsData[1]} />
+        
       </div>
     </section>
   );

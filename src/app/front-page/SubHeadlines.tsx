@@ -8,7 +8,6 @@ interface SubHeadlinesProps {
 }
 
 const SubHeadlines = (props: SubHeadlinesProps) => {
-  console.log(props.newsData.slice(13, 19));
 
   return (
     <section className="flex border-t-2 pt-2">
