@@ -1,10 +1,9 @@
-import { NextRequest } from "next/server";
 import { contentfulClient } from "../../../client";
 import { Asset } from "contentful";
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } },
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
   const res = await contentfulClient.getEntry(id);
