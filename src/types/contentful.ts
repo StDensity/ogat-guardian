@@ -63,6 +63,7 @@ export interface newsImagesType {
     height: number;
   };
 }
+import { Document } from "@contentful/rich-text-types";
 
 export interface newsDataDetailedType {
   id: string;
@@ -91,20 +92,8 @@ export interface newsDataDetailedType {
         color: string;
       };
     }[];
-    body: {
-      data: {};
-      content: {
-        data: {};
-        content: {
-          data: {};
-          marks: any[];
-          value: string;
-          nodeType: string;
-        }[];
-        nodeType: string;
-      }[];
-      nodeType: string;
-    };
+    body: Document;
+
     images: newsImagesType[];
   };
 }
