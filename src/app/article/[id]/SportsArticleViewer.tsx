@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel";
+import Image from "next/image";
 
 interface SportsArticleViewerProps {
   newsData: sportNewsDataDetailedType;
@@ -38,6 +39,74 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
         <div className="prose max-w-none pt-4">
           {documentToReactComponents(props.newsData.fields.body, {
             preserveWhitespace: true,
+          })}
+        </div>
+        {/* Results */}
+        <div className="">
+          {props.newsData.fields.result.map((item, index) => {
+            return (
+              <div key={index} className="mt-12 pt-8">
+                {/* Header */}
+                <div className="flex gap-16">
+                  <div className="size-40">
+                    <Image
+                      className="rounded-sm"
+                      src={props.newsData.fields.images[index].fields.url}
+                      height={props.newsData.fields.images[index].fields.height}
+                      width={props.newsData.fields.images[index].fields.width}
+                      alt={props.newsData.fields.images[index].fields.title}
+                    />
+                  </div>
+                  <div className="items-center justify-center">
+                    <div className="font-open_sans text-3xl font-bold">
+                      {item.title}
+                    </div>
+                    <div className="mt-5 flex justify-between border-2 border-guardianBlue pl-3">
+                      <div className="items-center justify-center text-center">
+                        <div className="font-bold">Judges</div>
+                        <div>{item.score.judges}</div>
+                      </div>
+                      <div className="items-center justify-center text-center">
+                        <div className="font-bold">Public</div>
+                        <div>{item.score.judges}</div>
+                      </div>
+                      <div className="items-center justify-center bg-guardianBlue px-8 text-center text-white">
+                        <div className="font-bold">Total</div>
+                        <div>{item.score.judges + item.score.public}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-black" />
+                {/* Body/Remarks */}
+                <div className="mt-2">
+                  <p className="text-lg font-bold text-gray-700">
+                    Scoring by judges
+                  </p>
+
+                  <div>
+                    {item.remarks.map((innerItem, index) => {
+                      return (
+                        <div key={index}>
+                          <div className="mt-2 text-lg font-bold text-gray-700">
+                            {innerItem.judge}
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            {innerItem.scores}
+                          </div>
+                          <div className="mt-2 text-sm font-thin italic">
+                            {innerItem.content
+                              ? `"${innerItem.content}"`
+                              : "No Comments was given."}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            );
           })}
         </div>
       </div>
