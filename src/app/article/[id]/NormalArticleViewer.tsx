@@ -5,11 +5,11 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel";
 
-interface ArticleViewerProps {
+interface NormalArticleViewerProps {
   newsData: normalNewsDataDetailedType;
 }
 
-const ArticleViewer = (props: ArticleViewerProps) => {
+const NormalArticleViewer = (props: NormalArticleViewerProps) => {
   return (
     <div className="flex pb-8 pt-8 font-open_sans">
       <div className="flex-1 basis-4/6">
@@ -47,4 +47,4 @@ const ArticleViewer = (props: ArticleViewerProps) => {
   );
 };
 
-export default ArticleViewer;
+export default NormalArticleViewer;

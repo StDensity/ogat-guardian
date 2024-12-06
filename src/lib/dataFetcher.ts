@@ -69,7 +69,7 @@ export const getDetailedNormalNewsById = async (
 /**
  * Fetch all sports news.
  */
-export const getAllSportsNews = async () => {
+export const getMinimalSportsNews = async (): Promise<newsDataType[]> => {
   const response = await fetch(`${BASE_URL}/content-type/sports-news`);
   if (!response.ok) throw new Error("Failed to fetch sports news");
   return response.json();
