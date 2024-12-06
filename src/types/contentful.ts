@@ -20,6 +20,7 @@ export interface authorFieldsType {
   name: string;
   avatarId: string;
   avatarUrl: string;
+  role: string;
 }
 
 export interface newsDataType {

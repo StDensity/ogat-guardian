@@ -25,6 +25,7 @@ export async function GET(
       author: {
         id: authorDetails.sys.id,
         fields: {
+          role: authorDetails.fields.role,
           id: authorDetails.fields.id,
           name: authorDetails.fields.name,
           avatar: {

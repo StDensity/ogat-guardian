@@ -10,6 +10,7 @@ export async function GET() {
       fields: {
         id: item.fields.id,
         name: item.fields.name,
+        role: item.fields.role,
         avatarId: (item.fields.avatar as Asset).sys.id || null,
         avatarUrl: item.fields.avatar
           ? `https:${(item.fields.avatar as Asset).fields.file?.url}`

@@ -33,3 +33,13 @@ export function getInitials(name: string): string {
     .map((word) => word[0].toUpperCase())
     .join("");
 }
+
+export function getTotalArticleCount(newsData: newsDataType[]) {
+  const authorCounts = newsData
+    .map((item) => item.fields.author.id)
+    .reduce((counts: Record<string, number>, authorId) => {
+      counts[authorId] = (counts[authorId] || 0) + 1;
+      return counts;
+    }, {});
+  return authorCounts;
+}

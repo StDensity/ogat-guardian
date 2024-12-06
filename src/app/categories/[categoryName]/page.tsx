@@ -15,7 +15,6 @@ const CategoryPage = async ({
       ? await getMinimalSportsNews()
       : await getMinimalNormalNews();
 
-  console.log(data);
   const categoryNews = data.filter(
     (item) => item.fields.category[0].fields.slug == categoryName,
   );
