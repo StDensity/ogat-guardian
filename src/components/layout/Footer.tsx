@@ -16,7 +16,11 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="font-open_sans">
+          <div className="font-open_sans flex flex-col">
+            <Link className="font-bold hover:underline" href={"/authors"}>
+              Contributors 💖
+            </Link>
+            
             <Link className="font-bold hover:underline" href={"/about-us"}>
               About us
             </Link>
