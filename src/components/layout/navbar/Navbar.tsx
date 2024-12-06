@@ -1,4 +1,4 @@
-import { getAllNewsCategories } from "@/lib/dataFetcher";
+import { getAllNewsCategories } from "@/app/lib/dataFetcher";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import NavItemRenderer from "./NavItemRenderer";

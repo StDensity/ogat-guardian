@@ -1,4 +1,4 @@
-import { getInitials, getTotalArticleCount } from "@/lib/utils";
+import { getInitials, getTotalArticleCount } from "@/app/lib/utils";
 import { authorType } from "@/types/contentful";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
@@ -10,7 +10,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { getMinimalNormalNews, getMinimalSportsNews } from "@/lib/dataFetcher";
+import {
+  getMinimalNormalNews,
+  getMinimalSportsNews,
+} from "@/app/lib/dataFetcher";
 
 interface AuthorsRendererProps {
   authorsData: authorType[];
@@ -25,7 +28,7 @@ const AuthorsRenderer = async (props: AuthorsRendererProps) => {
 
   const renderAuthors = () => {
     return (
-      <div className="my-4 flex flex-wrap gap-4 justify-center">
+      <div className="my-4 flex flex-wrap justify-center gap-4">
         {props.authorsData.map((author) => {
           return (
             <Card key={author.id} className="w-64 p-4 shadow-md">

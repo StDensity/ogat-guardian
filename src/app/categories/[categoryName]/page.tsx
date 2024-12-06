@@ -1,4 +1,7 @@
-import { getMinimalNormalNews, getMinimalSportsNews } from "@/lib/dataFetcher";
+import {
+  getMinimalNormalNews,
+  getMinimalSportsNews,
+} from "@/app/lib/dataFetcher";
 import React from "react";
 import FirstRow from "./FirstRow";
 import SecondRow from "./SecondRow";

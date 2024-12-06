@@ -1,7 +1,7 @@
 import {
   getDetailedNormalNewsById,
   getDetailedSportsNewsById,
-} from "@/lib/dataFetcher";
+} from "@/app/lib/dataFetcher";
 import React from "react";
 import NormalArticleViewer from "./NormalArticleViewer";
 import SportsArticleViewer from "./SportsArticleViewer";

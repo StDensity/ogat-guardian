@@ -1,4 +1,4 @@
-import { getAllAuthors } from "@/lib/dataFetcher";
+import { getAllAuthors } from "@/app/lib/dataFetcher";
 import React from "react";
 import AuthorsRenderer from "./AuthorsRenderer";
 

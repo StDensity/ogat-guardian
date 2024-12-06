@@ -1,6 +1,6 @@
 import { normalNewsDataDetailedType } from "@/types/contentful";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getInitials } from "@/lib/utils";
+import { getInitials } from "@/app/lib/utils";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel";

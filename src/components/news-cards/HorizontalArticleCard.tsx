@@ -1,4 +1,4 @@
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/app/lib/utils";
 import { newsDataType } from "@/types/contentful";
 import React from "react";
 
@@ -26,10 +26,10 @@ const HorizontalArticleCard = (params: HorizontalArticleCardProps) => {
         </p>
       </div>
 
-      <p className="font-open_sans pt-3 text-[18px] font-bold">
+      <p className="pt-3 font-open_sans text-[18px] font-bold">
         {params.newsData.fields.newsTitle}
       </p>
-      <p className="font-open_sans line-clamp-3 pt-3 text-sm">
+      <p className="line-clamp-3 pt-3 font-open_sans text-sm">
         {params.newsData.fields.summary}
       </p>
     </div>

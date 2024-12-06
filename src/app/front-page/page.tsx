@@ -1,8 +1,8 @@
 import React from "react";
 import Headlines from "./Headlines";
-import { getMinimalNormalNews } from "@/lib/dataFetcher";
+import { getMinimalNormalNews } from "@/app/lib/dataFetcher";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
-import { sortedDateLatestFirst } from "@/lib/utils";
+import { sortedDateLatestFirst } from "@/app/lib/utils";
 import SubHeadlines from "./SubHeadlines";
 import OgatHeadlines from "./OgatHeadlines";
 import SportsHeadlines from "./SportsHeadlines";

@@ -1,4 +1,4 @@
-import { formatDate } from "@/lib/utils";
+import { formatDate } from "@/app/lib/utils";
 import { newsDataType } from "@/types/contentful";
 import Image from "next/image";
 import Link from "next/link";
