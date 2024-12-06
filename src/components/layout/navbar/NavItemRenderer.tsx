@@ -10,19 +10,18 @@ interface NavItemRenderer {
 }
 
 const NavItemRenderer = (props: NavItemRenderer) => {
+  // Sorting nav
+  props.navData.sort((a, b) => a.fields.id - b.fields.id);
   const pathName = usePathname();
   return (
     <div className="flex h-full justify-between divide-x divide-white">
       {props.navData.map((item) => {
-        const lowerCaseLink = `/categories/${item.fields.name.toLowerCase()}`;
-        const isActive = pathName.startsWith(lowerCaseLink);
-        console.log(pathName);
-        console.log("link: ", lowerCaseLink);
-        console.log("avtie: ", isActive);
+        const link = `/categories/${item.fields.slug}`;
+        const isActive = pathName.startsWith(link);
         return (
           <Link
-            href={lowerCaseLink}
-            className="group relative w-full pb-1 pl-1 pr-5 pt-2 text-start font-noto_serif text-3xl font-bold text-white"
+            href={link}
+            className="group relative w-full pb-0.5 pl-1 pr-5 pt-0.5 text-start font-noto_serif text-3xl font-bold text-white"
             key={item.fields.id}
           >
             <div

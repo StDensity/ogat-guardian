@@ -7,6 +7,7 @@ export interface newsCategoryFieldsType {
   id: number;
   name: string;
   color: string;
+  slug: string;
 }
 
 export interface authorType {
@@ -42,11 +43,7 @@ export interface newsDataType {
     };
     category: {
       id: string;
-      fields: {
-        id: number;
-        name: string;
-        color: string;
-      };
+      fields: newsCategoryFieldsType;
     }[];
     images: newsImagesType;
   };
@@ -86,11 +83,7 @@ export interface newsDataDetailedType {
     };
     category: {
       id: string;
-      fields: {
-        id: number;
-        name: string;
-        color: string;
-      };
+      fields: newsCategoryFieldsType;
     }[];
     body: Document;
 

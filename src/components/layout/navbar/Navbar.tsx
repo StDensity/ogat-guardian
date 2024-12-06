@@ -8,12 +8,12 @@ const Navbar = async () => {
   data.reverse();
 
   return (
-    <div className="bg-guardianBlue">
+    <div className="items-center justify-center bg-guardianBlue">
       <div className="container mx-auto flex border bg-guardianBlue">
         <div className="scrollbar-hidden container mx-auto overflow-x-scroll">
           <NavItemRenderer navData={data} />
         </div>
-        <Input className="m-1 ml-2 h-10 max-w-52 rounded-none bg-white focus-visible:outline-none focus-visible:ring-0" />
+        <Input className="mx-2 h-8 max-w-52 self-center rounded-none bg-white focus-visible:outline-none focus-visible:ring-0" />
       </div>
     </div>
   );

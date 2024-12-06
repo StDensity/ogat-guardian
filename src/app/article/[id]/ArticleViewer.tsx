@@ -11,7 +11,7 @@ interface ArticleViewerProps {
 
 const ArticleViewer = (props: ArticleViewerProps) => {
   return (
-    <div className="flex pt-4 font-open_sans">
+    <div className="flex pt-8 font-open_sans pb-8">
       <div className="flex-1 basis-4/6">
         <div className="text-6xl font-bold">
           {props.newsData.fields.newsTitle}
