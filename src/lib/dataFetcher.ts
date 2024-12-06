@@ -1,8 +1,9 @@
 import {
   authorType,
   newsCategoryType,
-  newsDataDetailedType,
+  normalNewsDataDetailedType,
   newsDataType,
+  sportNewsDataDetailedType,
 } from "@/types/contentful";
 
 const BASE_URL = "http://localhost:3000/api/contentful";
@@ -59,7 +60,7 @@ export const getMinimalNormalNews = async (): Promise<newsDataType[]> => {
 
 export const getDetailedNormalNewsById = async (
   id: string,
-): Promise<newsDataDetailedType> => {
+): Promise<normalNewsDataDetailedType> => {
   const response = await fetch(`${BASE_URL}/content-type/normal-news/${id}`);
   if (!response.ok) throw new Error("Failed to fetch normal news");
   return response.json();
@@ -71,5 +72,13 @@ export const getDetailedNormalNewsById = async (
 export const getAllSportsNews = async () => {
   const response = await fetch(`${BASE_URL}/content-type/sports-news`);
   if (!response.ok) throw new Error("Failed to fetch sports news");
+  return response.json();
+};
+
+export const getDetailedSportsNewsById = async (
+  id: string,
+): Promise<sportNewsDataDetailedType> => {
+  const response = await fetch(`${BASE_URL}/content-type/sports-news/${id}`);
+  if (!response.ok) throw new Error("Failed to fetch normal news");
   return response.json();
 };

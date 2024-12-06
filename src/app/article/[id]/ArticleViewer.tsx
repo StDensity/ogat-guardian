@@ -1,4 +1,4 @@
-import { newsDataDetailedType } from "@/types/contentful";
+import { normalNewsDataDetailedType } from "@/types/contentful";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -6,12 +6,12 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel";
 
 interface ArticleViewerProps {
-  newsData: newsDataDetailedType;
+  newsData: normalNewsDataDetailedType;
 }
 
 const ArticleViewer = (props: ArticleViewerProps) => {
   return (
-    <div className="flex pt-8 font-open_sans pb-8">
+    <div className="flex pb-8 pt-8 font-open_sans">
       <div className="flex-1 basis-4/6">
         <div className="text-6xl font-bold">
           {props.newsData.fields.newsTitle}
@@ -36,9 +36,10 @@ const ArticleViewer = (props: ArticleViewerProps) => {
           <ArticleImageCarousel imageData={props.newsData.fields.images} />
         )}
         <div></div>
-        <div className="prose  max-w-none pt-4">
-          {documentToReactComponents(props.newsData.fields.body, {preserveWhitespace: true})}
-          
+        <div className="prose max-w-none pt-4">
+          {documentToReactComponents(props.newsData.fields.body, {
+            preserveWhitespace: true,
+          })}
         </div>
       </div>
       <div className="flex-1 basis-2/6 bg-gray-200">Right side container</div>

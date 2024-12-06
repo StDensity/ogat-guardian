@@ -2,7 +2,7 @@ import React from 'react'
 
 const loading = () => {
   return (
-    <div>loading</div>
+    <div className='container mx-auto min-h-[70vh]'>loading</div>
   )
 }
 

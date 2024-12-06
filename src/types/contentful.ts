@@ -62,7 +62,7 @@ export interface newsImagesType {
 }
 import { Document } from "@contentful/rich-text-types";
 
-export interface newsDataDetailedType {
+export interface normalNewsDataDetailedType {
   id: string;
   fields: {
     newsTitle: string;
@@ -87,6 +87,46 @@ export interface newsDataDetailedType {
     }[];
     body: Document;
 
+    images: newsImagesType[];
+  };
+}
+
+export interface sportNewsDataDetailedType {
+  id: string;
+  fields: {
+    newsTitle: string;
+    id: number;
+    date: string;
+    summary: string;
+    author: {
+      id: string;
+      fields: {
+        id: number;
+        name: string;
+        avatar: {
+          id: string;
+          title: string;
+          url: string;
+        };
+      };
+    };
+    category: {
+      id: string;
+      fields: newsCategoryFieldsType;
+    }[];
+    body: Document;
+    result: {
+      title: string;
+      score: {
+        judges: number;
+        public: number;
+      };
+      remarks: {
+        judge: string;
+        scores?: string;
+        content?: string;
+      }[];
+    }[];
     images: newsImagesType[];
   };
 }
