@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
       {
         source: "/",
         destination: "/front-page",
-        permanent: true,
+        permanent: false,
       },
     ];
   },
