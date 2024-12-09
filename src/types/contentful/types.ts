@@ -5,6 +5,7 @@ import type {
   EntrySkeletonType,
   LocaleCode,
 } from "contentful";
+import { JsonValue } from "type-fest";
 
 export interface TypeAuthorFields {
   id: EntryFieldTypes.Integer;
@@ -143,7 +144,7 @@ export interface TypeSportsNewsFields {
   images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
   summary?: EntryFieldTypes.Symbol;
   footnote?: EntryFieldTypes.Symbol;
-  results: EntryFieldTypes.Object;  
+  results: EntryFieldTypes.Object<EntryFieldTypes.Object>;
 }
 
 export type TypeSportsNewsSkeleton = EntrySkeletonType<
@@ -179,6 +180,7 @@ export type TypeSportsNewsWithAllLocalesAndWithoutUnresolvableLinksResponse<
 > = TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS" | "WITH_ALL_LOCALES", Locales>;
 
 export interface SportNewsResult {
+  [key: string]: JsonValue;
   title: string;
   score: {
     judges: number; // Assuming judges' score is a numeric value
@@ -191,4 +193,4 @@ export interface SportNewsResult {
   }[];
 }
 
-export type TypeSportsNewsResult = SportNewsResult;
+export type TypeSportsNewsResult = SportNewsResult[];

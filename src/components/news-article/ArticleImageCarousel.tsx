@@ -5,7 +5,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { newsImagesType } from "@/types/contentful";
 import { Asset } from "contentful";
 import Image from "next/image";
 

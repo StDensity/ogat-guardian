@@ -9,11 +9,9 @@ import {
   TypeSportsNewsSkeleton,
 } from "@/types/contentful/types";
 
-import { error } from "console";
-
 // const BASE_URL = "http://localhost:3000/api/contentful";
 
-import { Asset, AssetDetails, createClient, Entry } from "contentful";
+import { createClient } from "contentful";
 
 export const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -33,7 +31,7 @@ export const getAllNewsCategories = async (): Promise<
         content_type: "newsCategory",
       });
     return response.items;
-  } catch (error) {
+  } catch {
     throw new Error("Failed to fetch news categories");
   }
 };
@@ -49,7 +47,7 @@ export const getAllNormalNews = async (): Promise<
         },
       );
     return response.items;
-  } catch (error) {
+  } catch {
     throw new Error("Failed to fetch all normal news");
   }
 };
@@ -65,7 +63,7 @@ export const getAllSportNews = async (): Promise<
         },
       );
     return response.items;
-  } catch (error) {
+  } catch {
     throw new Error("Failed to fetch all normal news");
   }
 };
@@ -81,7 +79,7 @@ export const getAllAuthors = async (): Promise<
         },
       );
     return response.items;
-  } catch (error) {
+  } catch {
     throw new Error("Failed to fetch all authors");
   }
 };
@@ -95,7 +93,7 @@ export const getNormalNewsById = async (
         id,
       );
     return response;
-  } catch (error) {
+  } catch {
     throw new Error("Failed to fetch all normal news");
   }
 };
@@ -109,7 +107,7 @@ export const getSportsNewsById = async (
         id,
       );
     return response;
-  } catch (error) {
+  } catch {
     throw new Error("Failed to fetch individual sports news");
   }
 };
