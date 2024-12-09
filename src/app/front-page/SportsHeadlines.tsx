@@ -1,15 +1,15 @@
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
-import { newsDataType } from "@/types/contentful";
+import { TypeNormalNews } from "@/types/contentful/types";
 import React from "react";
 
 interface SportsHeadlinesProps {
-  newsData: newsDataType[];
+  newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[];
 }
 
 const SportsHeadlines = (props: SportsHeadlinesProps) => {
   return (
     <section className="flex border-t-2 pt-2">
-      <div className="flex-1 basis-3/12 hidden xl:flex">SPORTS</div>
+      <div className="hidden flex-1 basis-3/12 xl:flex">SPORTS</div>
       <div className="flex-2 basis-5/12">
         <VerticalArticleCard newsData={props.newsData[0]} />
       </div>
@@ -22,7 +22,6 @@ const SportsHeadlines = (props: SportsHeadlinesProps) => {
       </div>
       <div className="flex-1 basis-3/12">
         <VerticalArticleCard newsData={props.newsData[1]} />
-        
       </div>
     </section>
   );

@@ -1,9 +1,9 @@
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
-import { newsDataType } from "@/types/contentful";
+import { TypeNormalNews } from "@/types/contentful/types";
 import React from "react";
 
 interface HeadlinesProps {
-  newsData: newsDataType[];
+  newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[];
 }
 
 const Headlines = (props: HeadlinesProps) => {

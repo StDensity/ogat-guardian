@@ -1,4 +1,4 @@
-import { newsDataType } from "@/types/contentful";
+import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -18,7 +18,7 @@ export function formatDate(dateString: string): string {
   return date.toLocaleDateString("en-US", options);
 }
 
-export const sortedDateLatestFirst = (data: newsDataType[]) => {
+export const sortedDateLatestFirst = (data: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]) => {
   data.sort((a, b) => {
     return (
       new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime()
@@ -34,9 +34,9 @@ export function getInitials(name: string): string {
     .join("");
 }
 
-export function getTotalArticleCount(newsData: newsDataType[]) {
+export function getTotalArticleCount(newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[] | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]) {
   const authorCounts = newsData
-    .map((item) => item.fields.author.id)
+    .map((item) => item.fields.author?.sys.id || "")
     .reduce((counts: Record<string, number>, authorId) => {
       counts[authorId] = (counts[authorId] || 0) + 1;
       return counts;

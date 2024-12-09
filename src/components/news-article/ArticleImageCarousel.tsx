@@ -6,31 +6,34 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { newsImagesType } from "@/types/contentful";
+import { Asset } from "contentful";
 import Image from "next/image";
 
 interface ImageCarouselProps {
-  imageData: newsImagesType[];
+  imageData:
+    | (Asset<"WITHOUT_UNRESOLVABLE_LINKS", "en-US"> | undefined)[]
+    | undefined;
 }
 
 const ArticleImageCarousel = (props: ImageCarouselProps) => {
-  return (
+  return props.imageData ? (
     <Carousel className="mr-14">
       <CarouselContent>
         {props.imageData.map((item) => {
           return (
             <CarouselItem
-              key={item.id}
+              key={item?.sys.id}
               className="flex flex-col items-center justify-center"
             >
               <Image
                 className="h-[500px] w-[800px] object-contain"
-                src={item.fields.url}
+                src={`https:${item?.fields.file?.url}`}
                 height={500}
                 width={400}
-                alt={item.fields.title}
+                alt={item?.fields.title || ""}
               />
               <div className="pt-4 text-sm text-gray-500">
-                {item.fields.title}
+                {item?.fields.title}
               </div>
             </CarouselItem>
           );
@@ -39,6 +42,16 @@ const ArticleImageCarousel = (props: ImageCarouselProps) => {
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
+  ) : (
+    <div className="flex justify-center">
+      <Image
+        className="h-[500px] w-[800px] object-contain"
+        src={"/ogat_guardian_img.png"}
+        height={400}
+        width={400}
+        alt="Placeholder image"
+      />
+    </div>
   );
 };
 

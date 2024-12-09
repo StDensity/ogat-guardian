@@ -1,12 +1,12 @@
 "use client";
 
-import { newsCategoryType } from "@/types/contentful";
+import { TypeNewsCategory } from "@/types/contentful/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 interface NavItemRenderer {
-  navData: newsCategoryType[];
+  navData: TypeNewsCategory<undefined, "en-US">[];
 }
 
 const NavItemRenderer = (props: NavItemRenderer) => {

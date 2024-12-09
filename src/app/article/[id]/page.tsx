@@ -1,17 +1,14 @@
-import {
-  getDetailedNormalNewsById,
-  getDetailedSportsNewsById,
-} from "@/app/lib/dataFetcher";
+import { getNormalNewsById, getSportsNewsById } from "@/app/lib/dataFetcher";
 import React from "react";
 import NormalArticleViewer from "./NormalArticleViewer";
 import SportsArticleViewer from "./SportsArticleViewer";
 
 const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  const newsData = await getDetailedNormalNewsById(id);
+  const newsData = await getNormalNewsById(id);
   const sportsNewsData =
-    newsData.fields.category[0].fields.slug === "sports"
-      ? await getDetailedSportsNewsById(id)
+    newsData.fields.category[0]?.fields.slug === "sports"
+      ? await getSportsNewsById(id)
       : null; // or a default value
 
   return (

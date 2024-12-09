@@ -1,7 +1,4 @@
-import {
-  getMinimalNormalNews,
-  getMinimalSportsNews,
-} from "@/app/lib/dataFetcher";
+import { getAllNormalNews, getAllSportNews } from "@/app/lib/dataFetcher";
 import React from "react";
 import FirstRow from "./FirstRow";
 import SecondRow from "./SecondRow";
@@ -15,11 +12,11 @@ const CategoryPage = async ({
 
   const data =
     categoryName == "sports"
-      ? await getMinimalSportsNews()
-      : await getMinimalNormalNews();
+      ? await getAllSportNews()
+      : await getAllNormalNews();
 
   const categoryNews = data.filter(
-    (item) => item.fields.category[0].fields.slug == categoryName,
+    (item) => item.fields.category[0]?.fields.slug == categoryName,
   );
 
   return (

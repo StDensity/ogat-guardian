@@ -1,5 +1,4 @@
 import { getInitials, getTotalArticleCount } from "@/app/lib/utils";
-import { authorType } from "@/types/contentful";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
 import {
@@ -11,17 +10,18 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
-  getMinimalNormalNews,
-  getMinimalSportsNews,
+  getAllNormalNews,
+  getAllSportNews,
 } from "@/app/lib/dataFetcher";
+import { TypeAuthor } from "@/types/contentful/types";
 
 interface AuthorsRendererProps {
-  authorsData: authorType[];
+  authorsData: TypeAuthor<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[];
 }
 
 const AuthorsRenderer = async (props: AuthorsRendererProps) => {
-  const normalNews = await getMinimalNormalNews();
-  const sportsNews = await getMinimalSportsNews();
+  const normalNews = await getAllNormalNews();
+  const sportsNews = await getAllSportNews();
   const authorNormalNewsArticleCount = getTotalArticleCount(normalNews);
   const authorSportsNewsArticleCount = getTotalArticleCount(sportsNews);
   props.authorsData.sort((a, b) => a.fields.id - b.fields.id);
@@ -31,7 +31,7 @@ const AuthorsRenderer = async (props: AuthorsRendererProps) => {
       <div className="my-4 flex flex-wrap justify-center gap-4">
         {props.authorsData.map((author) => {
           return (
-            <Card key={author.id} className="w-64 p-4 shadow-md">
+            <Card key={author.sys.id} className="w-64 p-4 shadow-md">
               <div className="flex self-center font-bold text-guardianBlue">
                 #{author.fields.id}
               </div>
@@ -39,7 +39,7 @@ const AuthorsRenderer = async (props: AuthorsRendererProps) => {
               <CardHeader className="flex items-center space-y-2">
                 <Avatar className="h-24 w-24">
                   <AvatarImage
-                    src={author.fields.avatarUrl}
+                    src={`https:${author.fields.avatar?.fields.file?.url}`}
                     alt={`${author.fields.name}'s avatar`}
                     className="object-cover"
                   />
@@ -57,8 +57,8 @@ const AuthorsRenderer = async (props: AuthorsRendererProps) => {
 
               <CardContent className="text-center">
                 <p className="text-center text-sm text-gray-600">
-                  {(authorNormalNewsArticleCount[author.id] || 0) +
-                    (authorSportsNewsArticleCount[author.id] || 0) ||
+                  {(authorNormalNewsArticleCount[author.sys.id] || 0) +
+                    (authorSportsNewsArticleCount[author.sys.id] || 0) ||
                     '"I take photos...Cheese..."'}
                 </p>
               </CardContent>
