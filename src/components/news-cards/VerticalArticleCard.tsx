@@ -1,8 +1,11 @@
+"use client";
+
 import { formatDate } from "@/app/lib/utils";
 import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 interface VerticalArticleCardProps {
   newsData:
@@ -11,6 +14,10 @@ interface VerticalArticleCardProps {
 }
 
 const VerticalArticleCard = (props: VerticalArticleCardProps) => {
+  const router = useRouter();
+  useEffect(() => {
+    router.prefetch(`/article/${props.newsData.sys.id}`);
+  });
   return (
     <Link href={`/article/${props.newsData.sys.id}`}>
       <div className="p-2">
@@ -48,10 +55,10 @@ const VerticalArticleCard = (props: VerticalArticleCardProps) => {
             {formatDate(props.newsData.fields.date)}
           </p>
         </div>
-        <p className="font-open_sans pt-3 text-[20px] font-bold">
+        <p className="pt-3 font-open_sans text-[20px] font-bold">
           {props.newsData.fields.newsTitle}
         </p>
-        <p className="font-open_sans line-clamp-3 pt-3 text-sm">
+        <p className="line-clamp-3 pt-3 font-open_sans text-sm">
           {" "}
           {props.newsData.fields.summary}
         </p>
