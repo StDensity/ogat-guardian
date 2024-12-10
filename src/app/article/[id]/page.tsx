@@ -2,6 +2,7 @@ import { getNormalNewsById, getSportsNewsById } from "@/app/lib/dataFetcher";
 import React from "react";
 import NormalArticleViewer from "./NormalArticleViewer";
 import SportsArticleViewer from "./SportsArticleViewer";
+import Recommendations from "./Recommendations";
 
 const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -20,7 +21,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
           <NormalArticleViewer newsData={newsData} />
         )}
       </div>
-        <div className="flex-1 basis-2/6 bg-gray-200">Right side container</div>
+        <div className="flex-1 basis-2/6 "><Recommendations numberOfRecommendations={6} /></div>
     </section>
   );
 };

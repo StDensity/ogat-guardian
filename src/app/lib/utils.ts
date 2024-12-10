@@ -43,3 +43,9 @@ export function getTotalArticleCount(newsData: TypeNormalNews<"WITHOUT_UNRESOLVA
     }, {});
   return authorCounts;
 }
+
+
+export const getRandomNumbers = (max: number) => {
+  const rand = Math.floor(Math.random() * max)
+  return rand
+}

@@ -25,6 +25,12 @@ const nextConfig: NextConfig = {
         //  port: '',
         //  pathname: '/account123/**',
       },
+      {
+        protocol: "https",
+        hostname: "static.wixstatic.com",
+        //  port: '',
+        //  pathname: '/account123/**',
+      },
     ],
   },
   async redirects() {
