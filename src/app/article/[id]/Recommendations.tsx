@@ -31,7 +31,7 @@ const Recommendations = async (props: RecommendationsProps) => {
       <div>
         {recommendedArticle.map((item, index) => {
           return (
-            <Link href={`/article/${item.sys.id}`} key={index} className="my-8 flex">
+            <Link href={`/article/${item.sys.id}`} key={index} className="my-8 flex" prefetch={true}>
               <Image
                 className="h-28 w-32 min-w-40"
                 src={

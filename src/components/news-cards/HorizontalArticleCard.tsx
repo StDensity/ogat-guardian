@@ -1,5 +1,6 @@
 import { formatDate } from "@/app/lib/utils";
 import { TypeNormalNews } from "@/types/contentful/types";
+import Link from "next/link";
 import React from "react";
 
 interface HorizontalArticleCardProps {
@@ -8,7 +9,7 @@ interface HorizontalArticleCardProps {
 
 const HorizontalArticleCard = (params: HorizontalArticleCardProps) => {
   return (
-    <div className="p-2">
+    <Link href={`/article/${params.newsData.sys.id}`} className="p-2" prefetch={true}>
       {/* <Image
         className="h-80 w-full object-cover"
         src={params.newsData.fields.images.fields.url}
@@ -32,7 +33,7 @@ const HorizontalArticleCard = (params: HorizontalArticleCardProps) => {
       <p className="font-open_sans line-clamp-3 pt-3 text-sm">
         {params.newsData.fields.summary}
       </p>
-    </div>
+    </Link>
   );
 };
 
