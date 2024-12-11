@@ -18,7 +18,7 @@ const Footer = () => {
 
           <div className="font-open_sans flex flex-col">
             <Link className="font-bold hover:underline" href={"/authors"}>
-              Contributors 💖
+              Contributors <span className="animate-pulse">💖</span>
             </Link>
             
             <Link className="font-bold hover:underline" href={"/about-us"}>

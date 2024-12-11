@@ -112,6 +112,20 @@ export const getSportsNewsById = async (
   }
 };
 
+export const getAuthorById = async (
+  id: string,
+): Promise<TypeAuthor<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">> => {
+  try {
+    const response =
+      await contentfulClient.withoutUnresolvableLinks.getEntry<TypeAuthorSkeleton>(
+        id,
+      );
+    return response;
+  } catch {
+    throw new Error("Failed to fetch author from id");
+  }
+};
+
 // /**
 //  * Fetch a specific news category by ID.
 //  * @param id - The ID of the news category.
