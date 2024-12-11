@@ -16,7 +16,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex flex-col text-center font-open_sans md:text-left mt-8 md:mt-0">
+          <div className="mt-8 flex flex-col text-center font-open_sans md:mt-0 md:text-left">
             <Link className="font-bold hover:underline" href={"/authors"}>
               Contributors <span className="animate-pulse">💖</span>
             </Link>
@@ -31,7 +31,7 @@ const Footer = () => {
             </address>
           </div>
 
-          <div className="flex flex-col text-center md:text-left mt-8 md:mt-0">
+          <div className="mt-8 flex flex-col text-center md:mt-0 md:text-left">
             <Link className="font-bold hover:underline" href={"/about-us"}>
               Terms of Service
             </Link>
@@ -41,7 +41,10 @@ const Footer = () => {
             <Link className="font-bold hover:underline" href={"/about-us"}>
               Contact Us
             </Link>
-            <Link className="font-bold hover:underline" href={"/about-us"}>
+            <Link
+              className="font-bold hover:underline"
+              href={"/categories/archive"}
+            >
               Digital Archive
             </Link>
           </div>

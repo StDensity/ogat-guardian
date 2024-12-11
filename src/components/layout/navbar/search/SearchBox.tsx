@@ -27,7 +27,7 @@ const SearchBox = (props: SearchBoxProps) => {
 
   //   console.log(newsTitles);
   return (
-    <div className="relative mx-2 flex items-center">
+    <div className="relative sm:mx-2 flex items-center">
       <Input
         className="h-8 max-w-52 self-center rounded-none bg-white focus-visible:outline-none focus-visible:ring-0"
         onChange={(text) => setSearchTerm(text.target.value)}

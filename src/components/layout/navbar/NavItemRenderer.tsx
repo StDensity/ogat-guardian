@@ -21,7 +21,7 @@ const NavItemRenderer = (props: NavItemRenderer) => {
         return (
           <Link
             href={link}
-            className="group relative w-full pb-0.5 pl-1 pr-5 pt-0.5 text-start font-noto_serif text-3xl font-bold text-white"
+            className="group relative w-full pb-0.5 pl-1 pr-5 pt-0.5 text-start font-noto_serif text-lg font-bold text-white sm:text-xl lg:text-2xl xl:text-3xl"
             key={item.fields.id}
           >
             <div

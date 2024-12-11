@@ -13,7 +13,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
       : null; // or a default value
 
   return (
-    <section className="container mx-6 min-h-[70vh] md:mx-auto lg:flex">
+    <section className="md:container mx-6 min-h-[70vh] md:mx-auto lg:flex gap-10">
       <div className="lg:flex-1 lg:basis-4/6">
         {sportsNewsData ? (
           <SportsArticleViewer newsData={sportsNewsData} />

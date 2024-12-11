@@ -11,7 +11,7 @@ interface SecondRowProps {
 
 const SecondRow = (props: SecondRowProps) => {
   return (
-    <div className="mt-7 grid grid-cols-4 justify-between border-t-2 pt-1">
+    <div className="mt-7 grid justify-between border-t-2 pt-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
       {props.categoryNews.map((item) => {
         return (
           <div key={item.sys.id}>

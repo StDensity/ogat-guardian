@@ -16,31 +16,34 @@ interface ImageCarouselProps {
 
 const ArticleImageCarousel = (props: ImageCarouselProps) => {
   return props.imageData ? (
-    <Carousel className="mr-14">
-      <CarouselContent>
-        {props.imageData.map((item) => {
-          return (
-            <CarouselItem
-              key={item?.sys.id}
-              className="flex flex-col items-center justify-center"
-            >
-              <Image
-                className="h-[500px] w-[800px] object-contain"
-                src={`https:${item?.fields.file?.url}`}
-                height={500}
-                width={400}
-                alt={item?.fields.title || ""}
-              />
-              <div className="pt-4 text-sm text-gray-500">
-                {item?.fields.title}
-              </div>
-            </CarouselItem>
-          );
-        })}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div  className="mx-14">
+      <Carousel className="">
+        <CarouselContent>
+          {props.imageData.map((item) => {
+            return (
+              <CarouselItem
+                key={item?.sys.id}
+                className="flex flex-col items-center justify-center"
+              >
+                {/* h-[500px] w-[800px] */}
+                <Image
+                  className="h-auto w-auto lg:w-[400px] xl:w-[800px] object-contain"
+                  src={`https:${item?.fields.file?.url}`}
+                  height={500}
+                  width={400}
+                  alt={item?.fields.title || ""}
+                />
+                <div className="pt-4 text-sm text-gray-500">
+                  {item?.fields.title}
+                </div>
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
   ) : (
     <div className="flex justify-center">
       <Image
