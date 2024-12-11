@@ -43,6 +43,8 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
           preserveWhitespace: true,
         })}
       </div>
+      <br />
+      <p className="text-sm italic text-gray-400">{props.newsData.fields.footnote}</p>
     </div>
   );
 };

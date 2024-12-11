@@ -42,6 +42,10 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
           preserveWhitespace: true,
         })}
       </div>
+      <br />
+      <p className="text-sm italic text-gray-400">
+        {props.newsData.fields.footnote}
+      </p>
       {/* Results */}
       <div className="">
         {Array.isArray(props.newsData.fields.results) &&

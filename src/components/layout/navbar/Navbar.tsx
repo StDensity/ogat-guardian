@@ -1,9 +1,15 @@
-import { getAllNewsCategories } from "@/app/lib/dataFetcher";
-import { Input } from "@/components/ui/input";
+import {
+  getAllNewsCategories,
+  getAllNormalNews,
+  getAllSportNews,
+} from "@/app/lib/dataFetcher";
 import NavItemRenderer from "./NavItemRenderer";
+import SearchBox from "./search/SearchBox";
 
 const Navbar = async () => {
   const data = await getAllNewsCategories();
+  const normalNewsData = await getAllNormalNews();
+  const sportsNewsData = await getAllSportNews();
   data.reverse();
 
   return (
@@ -12,7 +18,10 @@ const Navbar = async () => {
         <div className="scrollbar-hidden container mx-auto overflow-x-scroll">
           <NavItemRenderer navData={data} />
         </div>
-        <Input className="mx-2 h-8 max-w-52 self-center rounded-none bg-white focus-visible:outline-none focus-visible:ring-0" />
+        <SearchBox
+          normalNewsData={normalNewsData}
+          sportsNewsData={sportsNewsData}
+        />
       </div>
     </div>
   );
