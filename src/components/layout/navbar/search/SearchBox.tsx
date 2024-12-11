@@ -36,7 +36,7 @@ const SearchBox = (props: SearchBoxProps) => {
         <div className="text-sm text-gray-800  max-h-72 overflow-auto scrollbar-hidden">
           {filteredItem.map((item) => {
             return (
-              <div className="border-b-2 hover:bg-gray-400 p-2">
+              <div key={item.id} className="border-b-2 hover:bg-gray-400 p-2">
                   <Link className="" href={`/article/${item.id}`} key={item.id}>
                     {item.newsTitle}
                   </Link>

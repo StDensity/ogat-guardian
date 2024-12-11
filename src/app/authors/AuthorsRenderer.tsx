@@ -1,17 +1,8 @@
-import { getInitials, getTotalArticleCount } from "@/app/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {  getTotalArticleCount } from "@/app/lib/utils";
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+
 import { getAllNormalNews, getAllSportNews } from "@/app/lib/dataFetcher";
 import { TypeAuthor } from "@/types/contentful/types";
-import Link from "next/link";
 import AuthorCard from "@/components/author/AuthorCard";
 
 interface AuthorsRendererProps {
