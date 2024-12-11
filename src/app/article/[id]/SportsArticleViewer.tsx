@@ -59,28 +59,28 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
                       className="rounded-sm"
                       src={
                         (props.newsData.fields.images &&
-                          props.newsData.fields.images[0] &&
-                          `https:${props.newsData.fields.images[0]?.fields.file?.url}`) ||
+                          props.newsData.fields.images[index] &&
+                          `https:${props.newsData.fields.images[index]?.fields.file?.url}`) ||
                         ""
                       }
                       height={
                         (props.newsData.fields.images &&
-                          props.newsData.fields.images[0] &&
-                          props.newsData.fields.images[0]?.fields.file?.details
+                          props.newsData.fields.images[index] &&
+                          props.newsData.fields.images[index]?.fields.file?.details
                             .image?.height) ||
                         400
                       }
                       width={
                         (props.newsData.fields.images &&
-                          props.newsData.fields.images[0] &&
-                          props.newsData.fields.images[0]?.fields.file?.details
+                          props.newsData.fields.images[index] &&
+                          props.newsData.fields.images[index]?.fields.file?.details
                             .image?.height) ||
                         400
                       }
                       alt={
                         (props.newsData.fields.images &&
-                          props.newsData.fields.images[0] &&
-                          props.newsData.fields.images[0]?.fields.title) ||
+                          props.newsData.fields.images[index] &&
+                          props.newsData.fields.images[index]?.fields.title) ||
                         ""
                       }
                     />

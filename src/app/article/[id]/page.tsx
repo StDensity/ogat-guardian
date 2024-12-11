@@ -18,7 +18,8 @@ export async function generateMetadata({
     description: newsData.fields.summary,
     openGraph: {
       title: newsData.fields.newsTitle,
-      description: newsData.fields.summary,
+      description:
+        newsData.fields.summary || "Open the website to read the full article.",
       images: [
         {
           url: newsData.fields.images
