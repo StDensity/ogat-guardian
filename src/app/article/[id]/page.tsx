@@ -3,6 +3,32 @@ import React from "react";
 import NormalArticleViewer from "./NormalArticleViewer";
 import SportsArticleViewer from "./SportsArticleViewer";
 import Recommendations from "./Recommendations";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const newsData = await getNormalNewsById(id);
+
+  return {
+    title: newsData.fields.newsTitle,
+    description: newsData.fields.summary,
+    openGraph: {
+      title: newsData.fields.newsTitle,
+      description: newsData.fields.summary,
+      images: [
+        {
+          url: newsData.fields.images
+            ? `https://${newsData.fields.images[0]?.fields.file?.url}`
+            : "/ogat_guardian_img.png",
+        },
+      ],
+    },
+  };
+}
 
 const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -13,7 +39,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
       : null; // or a default value
 
   return (
-    <section className="md:container mx-6 min-h-[70vh] md:mx-auto lg:flex gap-10">
+    <section className="mx-6 min-h-[70vh] gap-10 md:container md:mx-auto lg:flex">
       <div className="lg:flex-1 lg:basis-4/6">
         {sportsNewsData ? (
           <SportsArticleViewer newsData={sportsNewsData} />
@@ -21,7 +47,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
           <NormalArticleViewer newsData={newsData} />
         )}
       </div>
-      <div className="flex-1 lg:basis-2/6 border-t lg:border-none">
+      <div className="flex-1 border-t lg:basis-2/6 lg:border-none">
         <Recommendations numberOfRecommendations={6} />
       </div>
     </section>
