@@ -6,9 +6,9 @@ const Footer = () => {
     <footer className="">
       <div className="h-4 w-full bg-customDarkBlue" />
       <div className="w-full bg-guardianBlue pb-10 pt-4">
-        <div className="container mx-auto flex justify-center gap-24 font-noto_serif text-white">
-          <div>
-            <Link href={"/front-page"}>
+        <div className="container mx-auto justify-center gap-24 font-noto_serif text-white md:flex">
+          <div className="text-center md:text-left">
+            <Link className="" href={"/front-page"}>
               <h1 className="text-3xl font-bold md:text-5xl lg:text-6xl">
                 THE GUARDIAN
               </h1>
@@ -16,11 +16,11 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="font-open_sans flex flex-col">
+          <div className="flex flex-col text-center font-open_sans md:text-left mt-8 md:mt-0">
             <Link className="font-bold hover:underline" href={"/authors"}>
               Contributors <span className="animate-pulse">💖</span>
             </Link>
-            
+
             <Link className="font-bold hover:underline" href={"/about-us"}>
               About us
             </Link>
@@ -31,7 +31,7 @@ const Footer = () => {
             </address>
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col text-center md:text-left mt-8 md:mt-0">
             <Link className="font-bold hover:underline" href={"/about-us"}>
               Terms of Service
             </Link>

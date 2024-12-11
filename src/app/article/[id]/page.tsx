@@ -13,15 +13,17 @@ const ArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
       : null; // or a default value
 
   return (
-    <section className=" flex container mx-auto min-h-[70vh]">
-      <div className="flex-1 basis-4/6">
+    <section className="container mx-6 min-h-[70vh] md:mx-auto lg:flex">
+      <div className="lg:flex-1 lg:basis-4/6">
         {sportsNewsData ? (
           <SportsArticleViewer newsData={sportsNewsData} />
         ) : (
           <NormalArticleViewer newsData={newsData} />
         )}
       </div>
-        <div className="flex-1 basis-2/6 "><Recommendations numberOfRecommendations={6} /></div>
+      <div className="flex-1 lg:basis-2/6 border-t lg:border-none">
+        <Recommendations numberOfRecommendations={6} />
+      </div>
     </section>
   );
 };
