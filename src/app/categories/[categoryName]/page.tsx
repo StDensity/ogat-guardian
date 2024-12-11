@@ -23,7 +23,7 @@ export const generateMetadata = async ({
     description: "Your page description",
     openGraph: {
       title: `Category - ${currentCategory?.fields.name}`,
-      description: "OGAT News Service Sports Category",
+      description: `OGAT News Service ${currentCategory} Category`,
       images: [
         {
           url: "/ogat_guardian_img.png",
