@@ -4,6 +4,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel";
 import { TypeNormalNews } from "@/types/contentful/types";
+import Link from "next/link";
 
 interface NormalArticleViewerProps {
   newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;
@@ -15,18 +16,19 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
       <div className="text-2xl font-bold md:text-3xl lg:text-4xl xl:text-6xl">
         {props.newsData.fields.newsTitle}
       </div>
-      <div className="flex items-center gap-4 py-2">
-        <Avatar className="size-12">
-          <AvatarImage
-            src={
-              `${props.newsData.fields.author?.fields.avatar?.fields.file?.url}` ||
-              ""
-            }
-          />
-          <AvatarFallback className="bg-gray-300 font-bold">
-            {getInitials(props.newsData.fields.author?.fields.name || "")}
-          </AvatarFallback>
-        </Avatar>
+      <div className="flex  gap-4 py-2">
+        <Link href={`/authors/${props.newsData.fields.author?.sys.id}`} className="flex space-x-2 items-center">
+          <Avatar className="size-12">
+            <AvatarImage
+              src={
+                `${props.newsData.fields.author?.fields.avatar?.fields.file?.url}` ||
+                ""
+              }
+            />
+            <AvatarFallback className="bg-gray-300 font-bold">
+              {getInitials(props.newsData.fields.author?.fields.name || "")}
+            </AvatarFallback>
+          </Avatar>
         <div>
           <div className="text-sm font-bold">
             {props.newsData.fields.author?.fields.name}
@@ -35,6 +37,7 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
             {props.newsData.fields.date}
           </div>
         </div>
+        </Link>
       </div>
       <div>
         {<ArticleImageCarousel imageData={props.newsData.fields.images} />}
