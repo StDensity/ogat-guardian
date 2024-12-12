@@ -6,7 +6,33 @@ import {
 import { getTotalArticleCount } from "@/app/lib/utils";
 import AuthorCard from "@/components/author/AuthorCard";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
+import { Metadata } from "next";
 import React from "react";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ authorId: string }>;
+}): Promise<Metadata> => {
+  const { authorId } = await params;
+  const authorDetails = await getAuthorById(authorId);
+
+  return {
+    title: `${authorDetails.fields.name}`,
+    description: "Your page description",
+    openGraph: {
+      title: `Author - ${authorDetails.fields.name} `,
+      description: `${authorDetails.fields.role}`,
+      images: [
+        {
+          url: `https://${authorDetails.fields.avatar?.fields.file?.url}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+};
 
 const AuthorPage = async ({
   params,
@@ -35,15 +61,14 @@ const AuthorPage = async ({
         /> */}
       </div>
       <div className="grid grid-cols-4">
-      <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <AuthorCard
-          
-              authorDetails={authorDetails}
-              authorNormalNewsArticleCount={authorNormalNewsArticleCount}
-              authorSportsNewsArticleCount={authorSportsNewsArticleCount}
-              showLink={false}
-            />
-      </div>
+            authorDetails={authorDetails}
+            authorNormalNewsArticleCount={authorNormalNewsArticleCount}
+            authorSportsNewsArticleCount={authorSportsNewsArticleCount}
+            showLink={false}
+          />
+        </div>
         {newsByAuthor.map((news) => (
           <VerticalArticleCard key={news.sys.id} newsData={news} />
         ))}

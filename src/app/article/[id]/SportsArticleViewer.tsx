@@ -66,15 +66,15 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
                       height={
                         (props.newsData.fields.images &&
                           props.newsData.fields.images[index] &&
-                          props.newsData.fields.images[index]?.fields.file?.details
-                            .image?.height) ||
+                          props.newsData.fields.images[index]?.fields.file
+                            ?.details.image?.height) ||
                         400
                       }
                       width={
                         (props.newsData.fields.images &&
                           props.newsData.fields.images[index] &&
-                          props.newsData.fields.images[index]?.fields.file?.details
-                            .image?.height) ||
+                          props.newsData.fields.images[index]?.fields.file
+                            ?.details.image?.height) ||
                         400
                       }
                       alt={
