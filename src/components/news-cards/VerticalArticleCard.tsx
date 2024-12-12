@@ -1,3 +1,4 @@
+
 import { formatDate } from "@/app/lib/utils";
 import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
 import Image from "next/image";
@@ -40,12 +41,10 @@ const VerticalArticleCard = (props: VerticalArticleCardProps) => {
           />
         )}
         <div className="flex items-center space-x-2 pt-4">
-          <Link href={`/authors/${props.newsData.fields.author?.sys.id}` } className="flex space-x-2">
-            <p className="font-open_sans text-xs italic text-gray-600">by</p>
-            <p className="font-open_sans text-sm font-bold text-gray-800">
-              {props.newsData.fields.author?.fields.name}
-            </p>
-          </Link>
+          <p className="font-open_sans text-xs italic text-gray-600">by</p>
+          <p className="font-open_sans text-sm font-bold text-gray-800">
+            {props.newsData.fields.author?.fields.name}
+          </p>
           <p className="font-open_sans text-sm text-gray-500">
             {formatDate(props.newsData.fields.date)}
           </p>

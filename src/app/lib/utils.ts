@@ -18,7 +18,7 @@ export function formatDate(dateString: string): string {
   return date.toLocaleDateString("en-US", options);
 }
 
-export const sortedDateLatestFirst = (data: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]) => {
+export const sortedDateLatestFirst = (data: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[] | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]) => {
   data.sort((a, b) => {
     return (
       new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime()

@@ -1,9 +1,9 @@
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
-import { TypeNormalNews } from "@/types/contentful/types";
+import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
 import React from "react";
 
 interface SportsHeadlinesProps {
-  newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[];
+  newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[] | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]
 }
 
 const SportsHeadlines = (props: SportsHeadlinesProps) => {
