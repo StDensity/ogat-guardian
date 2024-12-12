@@ -6,7 +6,6 @@ import { sortedDateLatestFirst } from "@/app/lib/utils";
 import SubHeadlines from "./SubHeadlines";
 import OgatHeadlines from "./OgatHeadlines";
 import SportsHeadlines from "./SportsHeadlines";
-import { assert } from "console";
 
 const FrontPage = async () => {
   const NormalNews = await getAllNormalNews();
@@ -29,9 +28,9 @@ const FrontPage = async () => {
         {/* add */}
         <VerticalArticleCard newsData={latestFirstNormalNews[7]} />
         <VerticalArticleCard newsData={latestFirstNormalNews[8]} />
-        
+
         {/* sports */}
-        <p className="font-bold text-xl text-center">Sports</p>
+        <p className="text-center text-xl font-bold">Sports</p>
 
         <VerticalArticleCard newsData={latestFirstSportsNews[0]} />
         <VerticalArticleCard newsData={latestFirstSportsNews[1]} />
