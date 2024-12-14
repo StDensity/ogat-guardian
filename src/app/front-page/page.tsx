@@ -6,6 +6,34 @@ import { sortedDateLatestFirst } from "@/app/lib/utils";
 import SubHeadlines from "./SubHeadlines";
 import OgatHeadlines from "./OgatHeadlines";
 import SportsHeadlines from "./SportsHeadlines";
+import { Metadata } from "next";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ categoryName: string }>;
+}): Promise<Metadata> => {
+  const { categoryName } = await params;
+  const newsData = await getAllNormalNews();
+  const sortedNews = sortedDateLatestFirst(newsData);
+  return {
+    title: `${sortedNews[0]?.fields.newsTitle}`,
+    description: "Your page description",
+    openGraph: {
+      title: `Category - ${sortedNews[0]?.fields.newsTitle}`,
+      description: `${sortedNews[0]?.fields.summary}`,
+      images: [
+        {
+          url: sortedNews[0].fields.images
+            ? `https:${sortedNews[0].fields.images[0]?.fields.file?.url}`
+            : "/ogat_guardian_img.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+};
 
 const FrontPage = async () => {
   const NormalNews = await getAllNormalNews();

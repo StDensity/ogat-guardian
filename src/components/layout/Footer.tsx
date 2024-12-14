@@ -32,13 +32,13 @@ const Footer = () => {
           </div>
 
           <div className="mt-8 flex flex-col text-center md:mt-0 md:text-left">
-            <Link className="font-bold hover:underline" href={"/about-us"}>
+            <Link className="font-bold hover:underline" href={"/tos"}>
               Terms of Service
             </Link>
-            <Link className="font-bold hover:underline" href={"/about-us"}>
+            <Link className="font-bold hover:underline" href={"/subscribe"}>
               Subscription
             </Link>
-            <Link className="font-bold hover:underline" href={"/about-us"}>
+            <Link className="font-bold hover:underline" href={"/contact-us"}>
               Contact Us
             </Link>
             <Link
