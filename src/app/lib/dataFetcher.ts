@@ -9,7 +9,6 @@ import {
   TypeSportsNewsSkeleton,
 } from "@/types/contentful/types";
 
-// const BASE_URL = "http://localhost:3000/api/contentful";
 
 import { createClient } from "contentful";
 

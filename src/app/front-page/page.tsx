@@ -8,12 +8,7 @@ import OgatHeadlines from "./OgatHeadlines";
 import SportsHeadlines from "./SportsHeadlines";
 import { Metadata } from "next";
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: Promise<{ categoryName: string }>;
-}): Promise<Metadata> => {
-  const { categoryName } = await params;
+export const generateMetadata = async (): Promise<Metadata> => {
   const newsData = await getAllNormalNews();
   const sortedNews = sortedDateLatestFirst(newsData);
   return {
