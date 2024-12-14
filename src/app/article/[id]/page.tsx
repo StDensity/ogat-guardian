@@ -20,6 +20,9 @@ export async function generateMetadata({
       title: newsData.fields.newsTitle,
       description:
         newsData.fields.summary || "Open the website to read the full article.",
+      type: "article", // Specifies content type
+      authors: [newsData.fields.author?.fields.name || ""], // Array of authors
+      section: newsData.fields.category[0]?.fields.name || "News", // News category/section
       images: [
         {
           url: newsData.fields.images

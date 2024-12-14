@@ -14,7 +14,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
     description: "Your page description",
+
     openGraph: {
+      type: "article", // Specifies content type
+      authors: [sortedNews[0].fields.author?.fields.name || ""], // Array of authors
+      section: sortedNews[0].fields.category[0]?.fields.name || "News", // News category/section
       title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
       description: `${sortedNews[0]?.fields.summary}`,
       images: [
