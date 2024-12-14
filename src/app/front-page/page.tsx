@@ -12,10 +12,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const newsData = await getAllNormalNews();
   const sortedNews = sortedDateLatestFirst(newsData);
   return {
-    title: `${sortedNews[0]?.fields.newsTitle}`,
+    title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
     description: "Your page description",
     openGraph: {
-      title: `Category - ${sortedNews[0]?.fields.newsTitle}`,
+      title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
       description: `${sortedNews[0]?.fields.summary}`,
       images: [
         {
