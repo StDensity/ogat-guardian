@@ -1,3 +1,4 @@
+
 import React from "react";
 import Headlines from "./Headlines";
 import { getAllNormalNews, getAllSportNews } from "@/app/lib/dataFetcher";
@@ -11,6 +12,7 @@ import { Metadata } from "next";
 export const generateMetadata = async (): Promise<Metadata> => {
   const newsData = await getAllNormalNews();
   const sortedNews = sortedDateLatestFirst(newsData);
+  console.log("env", process.env.CONTENTFUL_SPACE_ID)
   return {
     title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
     description: "Your page description",
