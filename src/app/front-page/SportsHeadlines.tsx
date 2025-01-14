@@ -1,5 +1,7 @@
+import AdBadge from "@/components/AdBadge";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
 import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
+import Image from "next/image";
 import React from "react";
 
 interface SportsHeadlinesProps {
@@ -15,7 +17,11 @@ const SportsHeadlines = (props: SportsHeadlinesProps) => {
       </div>
 
       <div className="flex-1 basis-1/12 flex-row">
-        <p className="[writing-mode:vertical-lr]">Horizontal Advert</p>
+        <p className="">
+        <AdBadge >
+          <Image className='mt-2' src="/ads/hunter.webp" width={300} height={300} alt="ads" />
+        </AdBadge>
+          </p>
         {/* <HorizontalArticleCard newsData={props.newsData[1]} />
         <HorizontalArticleCard newsData={props.newsData[2]} />
         <HorizontalArticleCard newsData={props.newsData[3]} /> */}
