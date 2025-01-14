@@ -34,10 +34,10 @@ const Header = () => {
       <div className="bg-[#288BDE] px-1 py-6 font-noto_serif text-white">
         <div className="container mx-auto">
           <Link href={"/front-page"}>
-            <h1 className="sm:text-5xl font-bold md:text-6xl lg:text-[80px] text-3xl">
+            <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-[80px]">
               THE GUARDIAN
             </h1>
-            <p className="sm:text-2xl font-bold text-xl">OGAT NEWS SERVICE</p>
+            <p className="text-xl font-bold sm:text-2xl">OGAT NEWS SERVICE</p>
           </Link>
         </div>
       </div>

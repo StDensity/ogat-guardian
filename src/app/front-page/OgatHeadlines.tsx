@@ -1,5 +1,7 @@
+import AdBadge from "@/components/AdBadge";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
 import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
+import Image from "next/image";
 import React from "react";
 
 interface OgatHeadlinesProps {
@@ -14,7 +16,9 @@ const OgatHeadlines = (props: OgatHeadlinesProps) => {
         <VerticalArticleCard newsData={props.newsData[0]} />
       </div>
       <div className="flex-1 flex-row">
-        Ads
+        <AdBadge >
+          <Image className='mt-2' src="/ads/zongyi.webp" width={600} height={600} alt="ads" />
+        </AdBadge>
         {/* <HorizontalArticleCard newsData={props.newsData[2]} />
         <HorizontalArticleCard newsData={props.newsData[3]} />
         <HorizontalArticleCard newsData={props.newsData[4]} /> */}

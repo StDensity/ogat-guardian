@@ -1,6 +1,9 @@
+import AdBadge from "@/components/AdBadge";
 import HorizontalArticleCard from "@/components/news-cards/HorizontalArticleCard";
 import VerticalArticleCard from "@/components/news-cards/VerticalArticleCard";
+import WeatherWidget from "@/components/WeatherWidget";
 import { TypeNormalNews, TypeSportsNews } from "@/types/contentful/types";
+import Image from "next/image";
 import React from "react";
 
 interface SubHeadlinesProps {
@@ -12,7 +15,9 @@ interface SubHeadlinesProps {
 const SubHeadlines = (props: SubHeadlinesProps) => {
   return (
     <section className="flex border-t-2 pt-2">
-      <div className="hidden flex-1 xl:flex">Weather Area</div>
+      <div className="hidden flex-1 xl:flex">
+        <WeatherWidget />
+      </div>
       <div className="flex-1">
         <VerticalArticleCard newsData={props.newsData[0]} />
       </div>
@@ -22,7 +27,10 @@ const SubHeadlines = (props: SubHeadlinesProps) => {
         <HorizontalArticleCard newsData={props.newsData[3]} />
       </div>
       <div className="flex-1">
-        <VerticalArticleCard newsData={props.newsData[4]} />
+        {/* <VerticalArticleCard newsData={props.newsData[4]} /> */}
+        <AdBadge >
+          <Image className='mt-2' src="/ads/packers.webp" width={600} height={600} alt="ads" />
+        </AdBadge>
       </div>
     </section>
   );
