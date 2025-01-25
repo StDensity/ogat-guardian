@@ -1,5 +1,32 @@
 import React from "react";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "OGATCHAT Podcast Episodes Archive | OGAT Guardian",
+  description: "The complete collection of OGATCHAT Podcast episodes - the definitive (and only) OGAT podcast. Featuring hosts Ty (Lick_the_Taint) and Kyle (CallofKyle) with guests like CasualYoutuber31 and MeninisticTraplord. Includes Bug of the Week segments, Madball tournament coverage, and unexpected meditation sessions.",
+    openGraph: {
+    title: "Complete OGATCHAT Podcast Episode Archive",
+    description: "Dive into 15+ episodes of chaotic OGAT coverage - from serious game updates to snack tier lists. Features the legendary Bug of the Week segment and special guests!",
+    url: "/ogatchat",
+    type: "website",
+    images: [
+      {
+        url: "/community/ogat-chat-metadata-img.png", // Replace with actual podcast logo path
+        width: 1200,
+        height: 630,
+        alt: "OGATCHAT Podcast logo featuring hosts Ty and Kyle",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OGATCHAT Podcast - The Only OGAT Podcast That Matters",
+    description: "Where game updates meet snack tier lists and accidental meditation - relive all episodes here!",
+    images: ["/ogat-chat-logo.png"], // Match OG image
+  },
+};
+
 const chatData = [
   {
     title: "OGATCHAT Podcast Episode 1",

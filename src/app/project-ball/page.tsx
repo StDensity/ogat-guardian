@@ -1,63 +1,46 @@
-"use client";
-
 import DeveloperCard from "@/components/project-ball/DeveloperCard";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+
+import { Metadata } from "next";
+import Hero from "./Hero";
+
+export async function generateMetadata(): Promise<Metadata> {
+  // Static metadata since this is a fixed page
+  const title = "Project Ball | Ogat Guardian Logo Controversy";
+  const description =
+    "Discover why Ogat Guardian logo appeared in Project Ball. Explore developer regrets, hidden logo sightings, and join our community scavenger hunt.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: "Project Ball Developers vs Ogat Guardian Logo Mandate",
+      description,
+      type: "website",
+      images: [
+        {
+          url: "/community/bg-image-fallback.png",
+          width: 1200,
+          height: 630,
+          alt: "Project Ball developers standing in stadium with controversial logo",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Project Ball | The Great Logo Controversy",
+      description:
+        "Why developers had to include the Ogat Guardian logo against their will - exclusive insights",
+      images: ["/community/bg-image-fallback.png"],
+    },
+  };
+}
 
 export default function ProjectBallPage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100); // Adjust 100 to match your header height
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return (
     <div className="font-open_sans">
       {/* Hero Section with Background */}
-      <section className="relative h-screen overflow-hidden">
-        {/* Video Background (existing code) */}
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 z-0 h-full w-full object-cover"
-          poster="community/bg-image-fallback.png"
-        >
-          <source
-            src="videos/background_video_project_ball.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
-        {/* Dark Overlay (existing code) */}
-        <div className="absolute inset-0 z-10 bg-black/60" />
-
-        {/* Modified Content Section */}
-        <div className="relative z-20 flex h-full items-center justify-center text-center">
-          <div
-            className={`max-w-4xl px-4 transition-all duration-500 ${
-              isScrolled
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }`}
-          >
-            <h1 className="mb-6 font-noto_serif text-4xl font-bold text-white md:text-6xl">
-              <span className="text-guardianBlue">Project Ball</span> Developers
-              Forced to Include
-              <br />
-              <span className="text-white">Ogat Guardian Logo</span>
-            </h1>
-            <p className="mt-8 font-poppins text-lg italic text-gray-200 md:text-xl">
-              "Could've forced them to make Ogat 2" — a regretful afterthought.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Developer Cards */}
       <section className="container mx-auto px-4 py-16">
@@ -67,7 +50,7 @@ export default function ProjectBallPage() {
             role="Lead dev"
             quote="Should've sticked with ogat 2'"
             videoSrc="/videos/juggling.mp4"
-            avatarSrc="community/comi.png"
+            avatarSrc="/community/comi.png"
             fallbackImg="community/juggling-fallback.png"
           />
 
@@ -76,7 +59,7 @@ export default function ProjectBallPage() {
             role="The new art guy"
             quote="The logo reduces the ball gravity by .6% - trust me bro"
             videoSrc="/videos/ball-physics.mp4"
-            avatarSrc="community/jm.png"
+            avatarSrc="/community/jm.png"
             fallbackImg="community/ball-physics-fallback.png"
           />
         </div>

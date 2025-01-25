@@ -1,4 +1,5 @@
 // components/DeveloperCard.tsx
+import Image from "next/image";
 import React from "react";
 
 interface DeveloperCardProps {
@@ -35,10 +36,12 @@ const DeveloperCard: React.FC<DeveloperCardProps> = ({
 
         {/* Avatar Centered Over Video */}
         <div className="absolute top-3/4 ml-20 mt-10 -translate-x-1/2 -translate-y-1/2">
-          <img
+          <Image
             src={avatarSrc}
             className="h-24 w-24 rounded-full border-4 border-guardianBlue"
             alt={name}
+            width={100}
+            height={100}
           />
         </div>
       </div>
@@ -48,7 +51,7 @@ const DeveloperCard: React.FC<DeveloperCardProps> = ({
         <h3 className="font-poppins text-xl font-bold">{name}</h3>
         <p className="mb-3 text-gray-600">{role}</p>
         <blockquote className="border-l-4 border-guardianBlue pl-4 italic text-gray-800">
-          "{quote}"
+        &quot;{quote}!&quot;
         </blockquote>
       </div>
     </div>
