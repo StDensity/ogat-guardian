@@ -1,13 +1,13 @@
 "use client"
 
-import { getAsset } from "node:sea";
+// import { getAsset } from "node:sea";
 import React from "react";
 import { useState, useEffect } from "react";
-import { getAssetById } from "../lib/dataFetcher";
+// import { getAssetById } from "../lib/dataFetcher";
 
 const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [videoSrc, setVideoSrc] = useState("");
+//   const [videoSrc, setVideoSrc] = useState("");
   
 
   useEffect(() => {
