@@ -49,7 +49,7 @@ export default function ProjectBallPage() {
             name="Comi"
             role="Lead dev"
             quote="Should've sticked with ogat 2'"
-            videoSrc="/videos/juggling.mp4"
+            videoSrc="https://videos.ctfassets.net/blh9d07agz8n/2WTfHuyO4xNCpOPvSByGuC/091f8af55f82c34d8543e12e7cb57942/juggling.mp4"
             avatarSrc="/community/comi.png"
             fallbackImg="community/juggling-fallback.png"
           />
@@ -58,7 +58,7 @@ export default function ProjectBallPage() {
             name="J"
             role="The new art guy"
             quote="The logo reduces the ball gravity by .6% - trust me bro"
-            videoSrc="/videos/ball-physics.mp4"
+            videoSrc="https://videos.ctfassets.net/blh9d07agz8n/qqVDsCkmUZEpIDkWqSqRi/e7346472a020c0d4d34428723d5690f3/ball-physics.mp4"
             avatarSrc="/community/jm.png"
             fallbackImg="community/ball-physics-fallback.png"
           />
