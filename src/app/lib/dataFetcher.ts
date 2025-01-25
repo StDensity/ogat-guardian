@@ -10,7 +10,7 @@ import {
 } from "@/types/contentful/types";
 
 
-import { Asset, createClient } from "contentful";
+import { createClient } from "contentful";
 
 export const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -125,16 +125,16 @@ export const getAuthorById = async (
   }
 };
 
-export const getAssetById = async (
-  id: string,
-): Promise<Asset<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">> => {
-  try {
-    const response = await contentfulClient.withoutUnresolvableLinks.getAsset(id);
-    return response;
-  } catch (error) {
-    throw new Error("Failed to fetch asset from id");
-  }
-};
+// export const getAssetById = async (
+//   id: string,
+// ): Promise<Asset<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">> => {
+//   try {
+//     const response = await contentfulClient.withoutUnresolvableLinks.getAsset(id);
+//     return response;
+//   } catch (error) {
+//     throw new Error("Failed to fetch asset from id");
+//   }
+// };
 // /**
 //  * Fetch a specific news category by ID.
 //  * @param id - The ID of the news category.
