@@ -17,8 +17,12 @@ const Header = () => {
             WORK WITH US
           </Link>
           <span className="hidden sm:block">|</span>
-          <Link href="/subscribe" className="hover:underline">
+          <Link href="/subscribe" className="hover:underline hidden sm:block">
             SUBSCRIBE
+          </Link>
+          <span className="hidden sm:block">|</span>
+          <Link href="/community" className="hover:underline">
+            COMMUNITY
           </Link>
           <span>|</span>
           <Link href="/sign-in" className="flex items-center hover:underline">
