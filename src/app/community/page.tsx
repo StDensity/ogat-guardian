@@ -12,7 +12,7 @@ const page = () => {
           description='"The best OGAT podcast in the interweb"'
           author="LickTheTaint"
           src="/community/ogat-chat-full.png"
-          redirectSrc="https://ogatguardian.vercel.app/community/ogat-chat"
+          redirectSrc="/community/ogat-chat"
         />
       </div>
 

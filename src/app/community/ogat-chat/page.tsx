@@ -104,8 +104,8 @@ const Page = () => {
     <div className="container mx-auto pb-10 pt-10">
       <h1 className="mb-4 text-2xl font-bold">OGATCHAT Podcast Episodes</h1>
       <p className="mb-8 border-b-2 pb-4 text-gray-700">
-        OGATCHAT Podcast is the #1 OGAT podcast on the internet. Hosted by Ty
-        (Lick_the_Taint) and Kyle (CallofKyle). They cover everything
+        OGATCHAT Podcast is the #1 OGAT podcast on the internet. Hosted by <span className="font-bold">Ty
+        (Lick_the_Taint)</span> and <span className="font-bold">Kyle (CallofKyle)</span>. They cover everything
         OGAT—updates, guides, tournaments, and the legendary “Bug of the Week”.
         The show also brings in a stellar lineup of guests, like
         CasualYoutuber31 (Madball expert extraordinaire) and MeninisticTraplord
@@ -133,6 +133,9 @@ const Page = () => {
             </div>
           );
         })}
+      </div>
+      <div className="pt-5 text-sm text-gray-500 italic">
+        *Note: OGAT Guardian is not affiliated with OGATCHAT Podcast (We would love to). We are just journalists and fans of the show.
       </div>
     </div>
   );
