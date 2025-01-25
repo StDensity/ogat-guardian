@@ -17,11 +17,11 @@ const SportsHeadlines = (props: SportsHeadlinesProps) => {
       </div>
 
       <div className="flex-1 basis-1/12 flex-row">
-        <p className="">
+        <div className="">
         <AdBadge >
           <Image className='mt-2' src="/ads/hunter.webp" width={300} height={300} alt="ads" />
         </AdBadge>
-          </p>
+          </div>
         {/* <HorizontalArticleCard newsData={props.newsData[1]} />
         <HorizontalArticleCard newsData={props.newsData[2]} />
         <HorizontalArticleCard newsData={props.newsData[3]} /> */}
