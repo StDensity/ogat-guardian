@@ -55,7 +55,7 @@ export default function ProjectBallPage() {
           />
 
           <DeveloperCard
-            name="J"
+            name="Josh"
             role="The new art guy"
             quote="The logo reduces the ball gravity by .6% - trust me bro"
             videoSrc="https://videos.ctfassets.net/blh9d07agz8n/qqVDsCkmUZEpIDkWqSqRi/e7346472a020c0d4d34428723d5690f3/ball-physics.mp4"
