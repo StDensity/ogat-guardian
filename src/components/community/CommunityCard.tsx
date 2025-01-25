@@ -9,6 +9,7 @@ interface CommunityCardProps {
   author: string;
   description: string;
   redirectSrc: string;
+  isAffiliated?: boolean;
 }
 
 const CommunityCard = ({
@@ -17,6 +18,7 @@ const CommunityCard = ({
   author,
   description,
   redirectSrc,
+  isAffiliated,
 }: CommunityCardProps) => {
   return (
     <div>
@@ -33,10 +35,12 @@ const CommunityCard = ({
                 <p className="pt-10 italic">{description}</p>
               </div>
             </div>
-            <div className="pt-5 text-sm italic text-gray-500">
-              Note: OGAT Guardian is not affiliated with {title} (We would love
-              to). We are just journalists and fans.
-            </div>
+            {!isAffiliated && (
+              <div className="pt-5 text-sm italic text-gray-500">
+                Note: OGAT Guardian is not affiliated with {title} (We would
+                love to). We are just journalists and fans.
+              </div>
+            )}
           </div>
           {/* Iframe of the webpage */}
           <div className="md:w-1/2">
