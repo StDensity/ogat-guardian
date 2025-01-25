@@ -1,19 +1,30 @@
 "use client"
 
+import { getAsset } from "node:sea";
 import React from "react";
 import { useState, useEffect } from "react";
+import { getAssetById } from "../lib/dataFetcher";
 
 const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
+  
 
   useEffect(() => {
+    // const getVideoSrc = async () => {
+    //     const videoAsset = await getAssetById("5YyQNczBgcHfuoMjf7M98O");
+    //     setVideoSrc(videoAsset.fields.file?.url || "");
+    //     }
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100); // Adjust 100 to match your header height
     };
 
+    // getVideoSrc();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Video Background (existing code) */}
@@ -25,7 +36,7 @@ const Hero = () => {
         poster="community/bg-image-fallback.png"
       >
         <source
-          src="videos/background_video_project_ball.mp4"
+          src={"https://videos.ctfassets.net/blh9d07agz8n/5YyQNczBgcHfuoMjf7M98O/67ec399c835d3a632e1c7ea6d311af79/background_video_project_ball.mp4"}
           type="video/mp4"
         />
         Your browser does not support the video tag.
