@@ -44,7 +44,7 @@ export default function ProjectBallPage() {
 
       {/* Developer Cards */}
       <section className="container mx-auto px-4 py-16">
-        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2 grid-cols-1">
           <DeveloperCard
             name="Comi"
             role="Lead dev"
