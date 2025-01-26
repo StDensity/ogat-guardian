@@ -44,17 +44,18 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <div className="container mx-auto space-y-12 px-4 py-8">
-      {/* OGAT Podcast */}
-      <div>
-        <CommunityCard
-          title="OGAT Chat"
-          useIframe={false}
-          description='"The best OGAT podcast in the interweb"'
-          author="LickTheTaint"
-          src="/community/ogat-chat-full.png"
-          redirectSrc="/community/ogat-chat"
-        />
-      </div>
+      {/* Project Ball */}
+      <CommunityCard
+        title="Project Ball"
+        useIframe={false}
+        description={
+          '"Forget OGAT 2, the devs are busy redefining gaming\'—are they really nailing it? Lets find out what they’re up to!"'
+        }
+        author="Cominu"
+        src="/community/bg-image-fallback.png"
+        redirectSrc="/community/project-ball"
+        isAffiliated={true}
+      />
 
       {/* OGATHAX */}
       <CommunityCard
@@ -66,18 +67,17 @@ const page = () => {
         redirectSrc="https://www.ogathax.org"
       />
 
-      {/* Project Ball */}
-      <CommunityCard
-        title="Project Ball"
-        useIframe={false}
-        description={
-          '"Forget OGAT 2, the devs are busy redefining gaming\'—are they really nailing it? Lets find out what they’re up to!"'
-        }
-        author="Cominu"
-        src="/community/bg-image-fallback.png"
-        redirectSrc="/project-ball"
-        isAffiliated={true}
-      />
+      {/* OGAT Podcast */}
+      <div>
+        <CommunityCard
+          title="OGAT Chat"
+          useIframe={false}
+          description='"Dive into 15+ episodes of chaotic OGAT coverage. Hosted by Ty (Lick_the_Taint) and Kyle (CallofKyle) - from serious game updates to snack tier lists. Features the legendary Bug of the Week segment and special guests!"'
+          author="LickTheTaint"
+          src="/community/ogat-chat-full.png"
+          redirectSrc="/community/ogat-chat"
+        />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import DeveloperCard from "@/components/project-ball/DeveloperCard";
+import DeveloperCard from "@/components/community/project-ball/DeveloperCard";
 import Link from "next/link";
-import VideoCardsGrid from "@/components/project-ball/VideoCardsGrid";
+import VideoCardsGrid from "@/components/community/project-ball/VideoCardsGrid";
 import { Metadata } from "next";
 import Hero from "./Hero";
 
