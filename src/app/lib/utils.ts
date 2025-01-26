@@ -49,3 +49,12 @@ export const getRandomNumbers = (max: number) => {
   const rand = Math.floor(Math.random() * max)
   return rand
 }
+
+export const getClientHash = () => {
+  let hash = localStorage.getItem('client_hash')
+  if (!hash) {
+    hash = Math.random().toString(36).substr(2, 9) // 9-char random string
+    localStorage.setItem('client_hash', hash)
+  }
+  return hash
+}
