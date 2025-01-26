@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OGAT Guardian - News Website
+
+This is a satire news website project built using Next.js, designed to deliver news about the OGAT (Of Guards and Thieves) gaming community. It features articles, author profiles, category browsing, a community section, and more.
+
+## Features
+
+*   **News Articles:** Browse and read news articles with rich text formatting, images, and author information.
+*   **Author Profiles:** View profiles of the authors contributing to the site.
+*   **Category Browsing:** Explore news articles organized by category.
+*   **Community Section:** Access community resources like the OGATCHAT podcast archive, OGATHAX website, and information about Project Ball.
+*   **Search Functionality:** Search for articles using keywords.
+*   **Responsive Design:** Optimized for various screen sizes.
+*   **Theme Support:** Light and dark theme switching.
+*   **User Authentication:** Sign in functionality (with placeholders).
+*   **Subscription:** Newsletter subscription feature.
+*   **Terms of Service (TOS):** A page displaying the site's terms.
+*   **Contact Information:** Details on how to get in touch.
+*   **Work with Us:** Information for potential contributors.
+*   **Interactive UI:** Features like carousels, dropdown menus, and more.
+*   **Weather Widget:** Displays local weather for a specific location.
+
+## Technologies Used
+
+*   **Next.js:** React framework for building web applications.
+*   **TypeScript:** Typed JavaScript for enhanced development.
+*   **Tailwind CSS:** Utility-first CSS framework.
+*   **Contentful:** Headless CMS for content management.
+*   **Shadcn/ui:** UI component library
 
 ## Getting Started
 
-First, run the development server:
+1.  **Clone the Repository:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    git clone <repository_url>
+    cd ogat-guardian
+    ```
+2.  **Install Dependencies:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+3.  **Set up Environment Variables:**
+    
+    Note: There is no mock apis so, if you can use fake data or don't run the pages which uses the contentful api.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    *   Create a `.env.local` file in the root directory.
+    *   Add your Contentful API keys and other necessary variables. Example:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+        ```
+        CONTENTFUL_SPACE_ID=<your_contentful_space_id>
+        CONTENTFUL_ACCESS_TOKEN=<your_contentful_access_token>
+         CONTENTFUL_BRANCH=<your_contentful_environment_branch>
+        ```
+    *   You can copy/paste this from the provided file `sample.env.local`
 
-## Learn More
+4.  **Run the Development Server:**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    ```
+5.  **Open the application in your browser:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Visit [`http://localhost:3000`](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+If you'd like to contribute to this project, feel free to fork the repository and submit a pull request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This readme is drafted by [aitudio](https://aistudio.google.com/prompts) and used [mufeedvh/code2prompt](https://github.com/mufeedvh/code2prompt) to generate LLM prompt. 
