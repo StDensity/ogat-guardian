@@ -41,9 +41,9 @@ export default function ProjectBallPage() {
     {
       videoSrc:
         "https://videos.ctfassets.net/blh9d07agz8n/6hEcACH4daqkWGg367JnUm/7c1e084b114b74a4d2c433029e45e364/Goalie-1.mp4",
-      title: "Bored of ordinary life?",
+      title: "Bored of ordinary games?",
       description:
-        "Experience the thrill of being a goalie in Project Ball. 'It's like real life, but with less injuries'.",
+        "Experience the thrill of being a goalie in Project Ball. 'With your hands stretched'.",
       reverse: false,
       tag: "",
       fallbackImg: "community/goalie-1-fallback.png",
