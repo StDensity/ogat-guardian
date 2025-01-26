@@ -53,7 +53,7 @@ export default function ProjectBallPage() {
         "https://videos.ctfassets.net/blh9d07agz8n/eu91aWKy40sMqiDl6GGQq/c51eb964a9e803b769238827754afb9b/Goalie-2.mp4",
       title: "We know what it feels to be a goalie...",
       description:
-        "When feeling left out, you can always count the 'goalie watch'.",
+        "When feeling left out, you can always count on the 'goalie watch'.",
       tag: "Big Screen donated by The Guardian",
       fallbackImg: "community/goalie-2-fallback.png",
     },
@@ -61,7 +61,7 @@ export default function ProjectBallPage() {
     {
       videoSrc:
         "https://videos.ctfassets.net/blh9d07agz8n/6NSx4K5WCw8dKPXaODYRVC/0b4192d04f9effd6b689219c81b3be63/Redefine-Walking.mp4",
-      title: "Ever felt like running is slow?",
+      title: "Ever felt like running is outdated?",
       description: "No more worries, slide like a champ!",
       reverse: false,
       fallbackImg: "community/redefined-walking-fallback.png",
@@ -101,6 +101,9 @@ export default function ProjectBallPage() {
 
       {/* Developer Cards */}
       <section className="container mx-auto px-4 py-16">
+        <h2 className="mb-12 text-center font-noto_serif text-4xl font-bold text-customDarkBlue">
+          Meet the Team
+        </h2>
         <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
           <DeveloperCard
             name="Comi"
