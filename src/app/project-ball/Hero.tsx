@@ -36,7 +36,7 @@ const Hero = () => {
         poster="community/bg-image-fallback.png"
       >
         <source
-          src={"https://videos.ctfassets.net/blh9d07agz8n/5YyQNczBgcHfuoMjf7M98O/67ec399c835d3a632e1c7ea6d311af79/background_video_project_ball.mp4"}
+          src={"https://videos.ctfassets.net/blh9d07agz8n/5aJFEhogD4Vm8ZngPXK7Jj/9fbabcfced406c0b0b17ca9cae158f4c/Background_Video_Project_Ball.mp4"}
           type="video/mp4"
         />
         Your browser does not support the video tag.
