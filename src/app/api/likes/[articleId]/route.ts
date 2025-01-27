@@ -1,5 +1,4 @@
 import { createClient } from "@supabase/supabase-js";
-import { count } from "console";
 import { NextResponse } from "next/server";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
