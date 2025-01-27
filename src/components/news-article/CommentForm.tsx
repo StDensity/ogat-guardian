@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import supabase from "@/app/lib/supabase";
-import { getClientHash } from "@/app/lib/utils";
 import { useClientHash } from "@/hooks/useClientHash";
 
 export const CommentForm = ({ articleId }: { articleId: string }) => {
-  const [username, setUsername] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,11 +45,10 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
         }
       } else {
         // Reset form on success
-        setUsername("");
         setContent("");
         window.location.reload();
       }
-    } catch (err) {
+    } catch {
       setError("Network error - please try again");
     } finally {
       setIsSubmitting(false);

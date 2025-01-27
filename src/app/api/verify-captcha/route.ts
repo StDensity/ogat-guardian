@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   const { token } = await request.json();
   // const origin = request.headers.get("origin");
-//   if (!origin?.includes("your-domain.com")) {
-//     return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
-//   }
+  //   if (!origin?.includes("your-domain.com")) {
+  //     return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
+  //   }
   try {
     const res = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     if (!data.success) throw new Error("Verification failed");
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "CAPTCHA verification failed" },
       { status: 400 },

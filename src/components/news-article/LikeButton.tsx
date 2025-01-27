@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabase";
 import { useClientHash } from "@/hooks/useClientHash";
-import { FileHeart, Heart, HeartPulse } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export default function LikeButton({ articleId }: { articleId: string }) {
   const [likes, setLikes] = useState(0);
@@ -40,8 +40,8 @@ export default function LikeButton({ articleId }: { articleId: string }) {
         .from("likes")
         .delete()
         .eq("article_id", articleId)
-        .eq("client_hash", clientHash)
-        console.log(error, "dellete")
+        .eq("client_hash", clientHash);
+      console.log(error, "dellete");
 
       if (!error) {
         setLikes((prev) => prev - 1);
