@@ -1,7 +1,6 @@
 export interface Comment {
   id: string;
   article_id: string;
-  username: string;
   content: string;
   created_at: string;
   is_hidden?: boolean;

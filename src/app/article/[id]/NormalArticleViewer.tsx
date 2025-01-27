@@ -6,8 +6,8 @@ import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel
 import { TypeNormalNews } from "@/types/contentful/types";
 import Link from "next/link";
 import { CommentForm } from "@/components/news-article/CommentForm";
-import TestConnection from "@/components/TestConnection";
 import LikeButton from "@/components/news-article/LikeButton";
+import CommentsView from "@/components/news-article/CommentsView";
 
 interface NormalArticleViewerProps {
   newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;
@@ -60,9 +60,8 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
       <p className="text-sm italic text-gray-400">
         {props.newsData.fields.footnote}
       </p>
-      <TestConnection />
-
-      <CommentForm articleId="test-article-1" />
+      <CommentForm articleId={props.newsData.sys.id} />
+      <CommentsView articleId={props.newsData.sys.id} />
     </div>
   );
 };

@@ -18,7 +18,11 @@ export function formatDate(dateString: string): string {
   return date.toLocaleDateString("en-US", options);
 }
 
-export const sortedDateLatestFirst = (data: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[] | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]) => {
+export const sortedDateLatestFirst = (
+  data:
+    | TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]
+    | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[],
+) => {
   data.sort((a, b) => {
     return (
       new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime()
@@ -34,7 +38,11 @@ export function getInitials(name: string): string {
     .join("");
 }
 
-export function getTotalArticleCount(newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[] | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]) {
+export function getTotalArticleCount(
+  newsData:
+    | TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[]
+    | TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">[],
+) {
   const authorCounts = newsData
     .map((item) => item.fields.author?.sys.id || "")
     .reduce((counts: Record<string, number>, authorId) => {
@@ -44,17 +52,37 @@ export function getTotalArticleCount(newsData: TypeNormalNews<"WITHOUT_UNRESOLVA
   return authorCounts;
 }
 
-
 export const getRandomNumbers = (max: number) => {
-  const rand = Math.floor(Math.random() * max)
-  return rand
-}
+  const rand = Math.floor(Math.random() * max);
+  return rand;
+};
 
 export const getClientHash = () => {
-  let hash = localStorage.getItem('client_hash')
+  let hash = localStorage.getItem("client_hash");
   if (!hash) {
-    hash = Math.random().toString(36).substr(2, 9) // 9-char random string
-    localStorage.setItem('client_hash', hash)
+    hash = Math.random().toString(36).substr(2, 9); // 9-char random string
+    localStorage.setItem("client_hash", hash);
   }
-  return hash
-}
+  return hash;
+};
+
+export const formatDateTime = (isoString: string) => {
+  const date = new Date(isoString);
+
+  // Options for formatting the date
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZoneName: "short",
+  };
+
+  // Format the date
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "full",
+    timeStyle: "long",
+  }).format(date);
+};

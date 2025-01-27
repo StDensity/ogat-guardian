@@ -12,18 +12,16 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateInputs = () => {
-    if (!username.trim() || !content.trim()) {
-      setError("Both fields are required");
-      return false;
-    }
-    if (username.trim().length < 3 || username.trim().length > 25) {
-      setError("Username must be 3-25 characters");
+    if (!content.trim()) {
+      setError("Field is required");
       return false;
     }
     if (content.trim().length < 5 || content.trim().length > 500) {
       setError("Comment must be 5-500 characters");
       return false;
     }
+
+    // No error
     setError("");
     return true;
   };
@@ -37,7 +35,6 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
     try {
       const { error } = await supabase.from("comments").insert({
         article_id: articleId,
-        username: username.trim(),
         content: content.trim(),
         client_hash: clientHash,
       });
@@ -65,20 +62,6 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
     <form onSubmit={handleSubmit} className="mx-auto max-w-2xl space-y-4">
       <div className="space-y-2">
         <div className="relative">
-          <input
-            type="text"
-            placeholder="Username (3-25 characters)"
-            value={username}
-            onChange={(e) => setUsername(e.target.value.slice(0, 25))}
-            className="w-full rounded-lg border p-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-            disabled={isSubmitting}
-          />
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
-            {username.length}/25
-          </span>
-        </div>
-
-        <div className="relative">
           <textarea
             placeholder="Write your comment (5-500 characters)"
             value={content}
@@ -98,7 +81,7 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
 
       <button
         type="submit"
-        disabled={isSubmitting || !username.trim() || !content.trim()}
+        disabled={isSubmitting || !content.trim()}
         className="w-full rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting ? "Posting..." : "Post Comment"}
