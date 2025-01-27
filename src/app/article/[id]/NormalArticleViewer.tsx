@@ -19,10 +19,8 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
       <div className="text-2xl font-bold md:text-3xl lg:text-4xl xl:text-6xl">
         {props.newsData.fields.newsTitle}
       </div>
-      <div>
-        <LikeButton articleId="testing"/>
-      </div>
-      <div className="flex gap-4 py-2">
+      <div></div>
+      <div className="flex items-center gap-4 py-2">
         <Link
           href={`/authors/${props.newsData.fields.author?.sys.id}`}
           className="flex items-center space-x-2"
@@ -47,6 +45,7 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
             </div>
           </div>
         </Link>
+        <LikeButton articleId={props.newsData.sys.id} />
       </div>
       <div>
         {<ArticleImageCarousel imageData={props.newsData.fields.images} />}

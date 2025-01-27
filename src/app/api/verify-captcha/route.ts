@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const { token } = await request.json();
-  const origin = request.headers.get("origin");
+  // const origin = request.headers.get("origin");
 //   if (!origin?.includes("your-domain.com")) {
 //     return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
 //   }

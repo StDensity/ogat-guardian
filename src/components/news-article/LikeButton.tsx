@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabase";
 import { useClientHash } from "@/hooks/useClientHash";
+import { FileHeart, Heart, HeartPulse } from "lucide-react";
 
 export default function LikeButton({ articleId }: { articleId: string }) {
   const [likes, setLikes] = useState(0);
@@ -33,26 +34,43 @@ export default function LikeButton({ articleId }: { articleId: string }) {
   }, [articleId, clientHash]);
 
   const handleLike = async () => {
-    if (!clientHash || hasLiked) return;
+    if (!clientHash) return;
+    else if (hasLiked) {
+      const { error } = await supabase
+        .from("likes")
+        .delete()
+        .eq("article_id", articleId)
+        .eq("client_hash", clientHash)
+        console.log(error, "dellete")
 
-    const { error } = await supabase.from("likes").insert({
-      article_id: articleId,
-      client_hash: clientHash,
-    });
+      if (!error) {
+        setLikes((prev) => prev - 1);
+        setHasLiked(false);
+      }
+    } else {
+      const { error } = await supabase.from("likes").insert({
+        article_id: articleId,
+        client_hash: clientHash,
+      });
 
-    if (!error) {
-      setLikes((prev) => prev + 1);
-      setHasLiked(true);
+      if (!error) {
+        setLikes((prev) => prev + 1);
+        setHasLiked(true);
+      }
     }
   };
 
   return (
-    <button
-      onClick={handleLike}
-      className={`px-4 py-2 ${hasLiked ? "bg-gray-400" : "bg-red-500"} text-white`}
-      disabled={hasLiked}
-    >
-      👍 {likes}
-    </button>
+    <div className="flex gap-2" onClick={handleLike}>
+      {/* <button
+        onClick={handleLike}
+        className={`px-4 py-2 ${hasLiked ? "bg-gray-400" : "bg-red-500"} text-white`}
+        disabled={hasLiked}
+      >
+        👍 {likes}
+      </button> */}
+      <Heart className={`${hasLiked && "fill-red-400"}`} />
+      <div className="text-gray-600">{likes}</div>
+    </div>
   );
 }

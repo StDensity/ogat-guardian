@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { TypeAuthor } from "@/types/contentful/types";
 import Link from "next/link";
+import LikeButton from "../news-article/LikeButton";
 
 interface AuthorCardProps {
   authorDetails: TypeAuthor<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;
@@ -49,12 +50,13 @@ const AuthorCard = ({
         </div>
       </CardHeader>
 
-      <CardContent className="text-center">
+      <CardContent className="flex items-center justify-center justify-items-center gap-4 text-center">
         <p className="text-center text-sm text-gray-600">
           {(authorNormalNewsArticleCount[authorDetails.sys.id] || 0) +
-            (authorSportsNewsArticleCount[authorDetails.sys.id] || 0) ||
-            '"I take photos...Cheese..."'}
+            (authorSportsNewsArticleCount[authorDetails.sys.id] || 0) +
+            "📄" || '"I take photos...Cheese..."'}
         </p>
+        <LikeButton articleId={authorDetails.sys.id} />
       </CardContent>
 
       <CardFooter>
