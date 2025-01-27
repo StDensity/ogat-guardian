@@ -23,9 +23,12 @@ This is a satire news website project built using Next.js, designed to deliver n
 
 *   **Next.js:** React framework for building web applications.
 *   **TypeScript:** Typed JavaScript for enhanced development.
+*   **Supabase:** Database.
+*   **Cloudflare Turnstile:** Spam protection.
 *   **Tailwind CSS:** Utility-first CSS framework.
 *   **Contentful:** Headless CMS for content management.
 *   **Shadcn/ui:** UI component library
+
 
 ## Getting Started
 
