@@ -3,11 +3,14 @@
 import { useState } from "react";
 import supabase from "@/app/lib/supabase";
 import { useClientHash } from "@/hooks/useClientHash";
+import Turnstile from "react-turnstile";
 
 export const CommentForm = ({ articleId }: { articleId: string }) => {
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaValid, setCaptchaValid] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const validateInputs = () => {
     if (!content.trim()) {
@@ -31,18 +34,16 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
 
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("comments").insert({
-        article_id: articleId,
-        content: content.trim(),
-        client_hash: clientHash,
+      const response = await fetch(`/api/comments/${articleId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content, client_hash: clientHash }),
       });
 
-      if (error) {
-        if (error.code === "23514") {
-          setError("Invalid input format - please check lengths");
-        } else {
-          setError(`Submission failed: ${error.message}`);
-        }
+      if (!response.ok) {
+        setError(`Submission failed`);
       } else {
         // Reset form on success
         setContent("");
@@ -71,6 +72,23 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
           </span>
         </div>
       </div>
+      {/* Turnstile */}
+      <Turnstile
+        sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+        onVerify={(token) => {
+          setCaptchaValid(true);
+          setCaptchaToken(token);
+        }}
+        onError={() => {
+          setCaptchaValid(false);
+          setCaptchaToken("");
+        }}
+        onExpire={() => {
+          setCaptchaValid(false);
+          setCaptchaToken("");
+        }}
+        className="mx-auto"
+      />
 
       {error && (
         <div className="rounded-lg bg-red-50 p-3 text-red-600">{error}</div>
@@ -78,7 +96,7 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
 
       <button
         type="submit"
-        disabled={isSubmitting || !content.trim()}
+        disabled={isSubmitting || !content.trim() }
         className="w-full rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting ? "Posting..." : "Post Comment"}

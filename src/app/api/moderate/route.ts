@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/app/lib/supabase";
 import SHA256 from "crypto-js/sha256";
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
   try {
     const { commentId, password } = await request.json();
 

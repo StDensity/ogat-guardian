@@ -5,6 +5,8 @@ import { supabase } from "@/app/lib/supabase";
 import { useClientHash } from "@/hooks/useClientHash";
 import { Heart } from "lucide-react";
 
+import { Like } from "@/types/database";
+
 export default function LikeButton({ articleId }: { articleId: string }) {
   const [likes, setLikes] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
@@ -12,21 +14,20 @@ export default function LikeButton({ articleId }: { articleId: string }) {
 
   useEffect(() => {
     const checkLikes = async () => {
-      const { count } = await supabase
-        .from("likes")
-        .select("*", { count: "exact" })
-        .eq("article_id", articleId);
+      // Get like count and data
+      const response = await fetch(`/api/likes/${articleId}`);
 
-      setLikes(count || 0);
+      if (!response) {
+        setLikes(0);
+        return;
+      }
 
+      const { count, data } = await response.json();
+      setLikes(count);
+
+      // Checks if client has already liked it
       if (clientHash) {
-        const { data } = await supabase
-          .from("likes")
-          .select()
-          .eq("article_id", articleId)
-          .eq("client_hash", clientHash);
-
-        setHasLiked(!!data?.length);
+        setHasLiked(data.some((item: Like) => item.client_hash === clientHash));
       }
     };
 
@@ -34,42 +35,40 @@ export default function LikeButton({ articleId }: { articleId: string }) {
   }, [articleId, clientHash]);
 
   const handleLike = async () => {
+    // Return if unable to generate client hash
     if (!clientHash) return;
+    // If already liked removing like
     else if (hasLiked) {
-      const { error } = await supabase
-        .from("likes")
-        .delete()
-        .eq("article_id", articleId)
-        .eq("client_hash", clientHash);
-      console.log(error, "dellete");
-
-      if (!error) {
-        setLikes((prev) => prev - 1);
-        setHasLiked(false);
-      }
-    } else {
-      const { error } = await supabase.from("likes").insert({
-        article_id: articleId,
-        client_hash: clientHash,
+      const response = await fetch("/api/likes/${articleId}`", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ client_hash: clientHash }),
       });
-
-      if (!error) {
-        setLikes((prev) => prev + 1);
-        setHasLiked(true);
-      }
+      if (!response.ok) return;
+      setLikes((prev) => prev - 1);
+      setHasLiked(false);
+      return;
     }
+
+    // Adding new like
+    const response = await fetch("/api/likes/${articleId}`", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ client_hash: clientHash }),
+    });
+    if (!response.ok) return;
+    setHasLiked(true);
+    setLikes((prev) => prev + 1);
+    return;
   };
 
   return (
     <div className="flex gap-2" onClick={handleLike}>
-      {/* <button
-        onClick={handleLike}
-        className={`px-4 py-2 ${hasLiked ? "bg-gray-400" : "bg-red-500"} text-white`}
-        disabled={hasLiked}
-      >
-        👍 {likes}
-      </button> */}
-      <Heart className={`${hasLiked && "fill-red-400"}`} />
+      <Heart className={`${hasLiked && "fill-red-400"} cursor-pointer`} />
       <div className="text-gray-600">{likes}</div>
     </div>
   );

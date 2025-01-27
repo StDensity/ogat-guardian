@@ -1,6 +1,6 @@
 "use client";
 
-import supabase from "@/app/lib/supabase";
+// import supabase from "@/app/lib/supabase";
 import { formatDateTime } from "@/app/lib/utils";
 import { Comment } from "@/types/database";
 import { useEffect, useState } from "react";
@@ -14,22 +14,16 @@ const CommentsView = (props: CommentsViewProps) => {
 
   useEffect(() => {
     const fetchComments = async () => {
-      const { data, error } = await supabase
-        .from("comments")
-        .select("*")
-        .eq("article_id", props.articleId)
-        .order("created_at", { ascending: false });
-
-      if (error) {
-        console.error(error);
-      } else {
-        setComments(data || []);
+      const response = await fetch(`/api/comments/${props.articleId}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch comments");
       }
+      const data = await response.json();
+      setComments(data);
     };
 
     fetchComments();
   }, [props.articleId]);
-  console.log(comments, "comments");
 
   return (
     <div>
