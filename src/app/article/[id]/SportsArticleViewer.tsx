@@ -6,6 +6,8 @@ import Image from "next/image";
 import { SportNewsResult, TypeSportsNews } from "@/types/contentful/types";
 import Link from "next/link";
 import LikeButton from "@/components/news-article/LikeButton";
+import { CommentForm } from "@/components/news-article/CommentForm";
+import CommentsView from "@/components/news-article/CommentsView";
 
 interface SportsArticleViewerProps {
   newsData: TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;
@@ -145,6 +147,10 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
               </div>
             );
           })}
+      </div>
+      <div className="pt-4">
+        <CommentForm articleId={props.newsData.sys.id} />
+        <CommentsView articleId={props.newsData.sys.id} />
       </div>
     </div>
   );
