@@ -5,6 +5,7 @@ import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel
 import Image from "next/image";
 import { SportNewsResult, TypeSportsNews } from "@/types/contentful/types";
 import Link from "next/link";
+import LikeButton from "@/components/news-article/LikeButton";
 
 interface SportsArticleViewerProps {
   newsData: TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;
@@ -38,6 +39,7 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
             </div>
           </div>
         </Link>
+        <LikeButton articleId={props.newsData.sys.id} />
       </div>
 
       {props.newsData.fields.images && (
