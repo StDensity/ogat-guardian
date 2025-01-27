@@ -39,7 +39,6 @@ export async function GET(
   }
 }
 
-
 // Adding comments
 
 export async function POST(
@@ -57,13 +56,32 @@ export async function POST(
 
   try {
     // Parse the request body
-    const { content, client_hash } = await request.json();
+    const { content, client_hash, captchaToken } = await request.json();
 
     if (!content || !client_hash) {
       return NextResponse.json(
-        { error: "content and clientHash are required" },
+        { error: "content, clientHash and captcha token are required" },
         { status: 400 },
       );
+    }
+
+    // Verifying captcha validity
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          secret: process.env.TURNSTILE_SECRET_KEY,
+          response: captchaToken,
+        }),
+      },
+    );
+
+    const data = await res.json();
+    
+    if (!data.success) {
+      throw new Error("Captcha Verification failed");
     }
 
     // Insert the new comment into the database
@@ -71,7 +89,6 @@ export async function POST(
       article_id: articleId,
       content: content.trim(),
       client_hash: client_hash,
-
     });
 
     if (error) {

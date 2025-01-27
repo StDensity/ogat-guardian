@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/app/lib/supabase";
 import { useClientHash } from "@/hooks/useClientHash";
 import { Heart } from "lucide-react";
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import supabase from "@/app/lib/supabase";
 import { useClientHash } from "@/hooks/useClientHash";
 import Turnstile from "react-turnstile";
 
@@ -39,7 +38,11 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content, client_hash: clientHash }),
+        body: JSON.stringify({
+          content,
+          client_hash: clientHash,
+          captchaToken,
+        }),
       });
 
       if (!response.ok) {
@@ -96,7 +99,7 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
 
       <button
         type="submit"
-        disabled={isSubmitting || !content.trim() }
+        disabled={isSubmitting || !content.trim() || !captchaValid}
         className="w-full rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting ? "Posting..." : "Post Comment"}

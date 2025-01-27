@@ -1,6 +1,5 @@
 "use client";
 
-// import supabase from "@/app/lib/supabase";
 import { formatDateTime } from "@/app/lib/utils";
 import { Comment } from "@/types/database";
 import { useEffect, useState } from "react";
