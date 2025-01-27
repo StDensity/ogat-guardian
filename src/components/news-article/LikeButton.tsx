@@ -38,7 +38,7 @@ export default function LikeButton({ articleId }: { articleId: string }) {
     if (!clientHash) return;
     // If already liked removing like
     else if (hasLiked) {
-      const response = await fetch("/api/likes/${articleId}`", {
+      const response = await fetch(`/api/likes/${articleId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -52,8 +52,8 @@ export default function LikeButton({ articleId }: { articleId: string }) {
     }
 
     // Adding new like
-    const response = await fetch("/api/likes/${articleId}`", {
-      method: "DELETE",
+    const response = await fetch(`/api/likes/${articleId}`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -67,7 +67,9 @@ export default function LikeButton({ articleId }: { articleId: string }) {
 
   return (
     <div className="flex gap-2" onClick={handleLike}>
-      <Heart className={`${hasLiked && "fill-red-400"} cursor-pointer`} />
+      <Heart
+        className={`${hasLiked ? "fill-red-400" : "opacity-65"} cursor-pointer`}
+      />
       <div className="text-gray-600">{likes}</div>
     </div>
   );
