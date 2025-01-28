@@ -26,6 +26,13 @@ const CommentsView = (props: CommentsViewProps) => {
   }, [props.articleId]);
 
   const handleDelete = async (commentId: string) => {
+    const password = prompt(
+      "Please enter the mod password to confirm deletion:",
+    );
+    const passwordResponse = await fetch(`/api/moderate/${password}`);
+    if (!passwordResponse.ok) {
+      throw new Error("Invalid password");
+    }
     setComments((prev) => prev.filter((comment) => comment.id !== commentId));
     const response = await fetch(`/api/comments/${commentId}`, {
       method: "DELETE",
