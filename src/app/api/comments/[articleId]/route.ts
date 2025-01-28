@@ -112,10 +112,10 @@ export async function DELETE(
   request: Request,
   { params }: { params: { articleId: string } },
 ) {
-  const { articleId: comment } = params;
+  const { articleId: commentId } = params;
 
   try {
-    if (!comment) {
+    if (!commentId) {
       return NextResponse.json(
         { error: "Comment id is required" },
         { status: 400 },
@@ -123,15 +123,15 @@ export async function DELETE(
     }
 
     const { error } = await supabase
-      .from("comments")
-      .delete()
-      .eq("id", comment);
+    .from('comments') // Replace with your table name
+    .update({ is_hidden: true }) // Set is_hidden to true
+    .eq('id', commentId); // Match the commentid", comment);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ message: "Comment deleted successfully" });
+    return NextResponse.json({ message: "Comment hidden successfully" });
   } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
