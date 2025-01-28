@@ -1,6 +1,6 @@
 # OGAT Guardian - News Website
 
-This is a satire news website project built using Next.js, designed to deliver news about the OGAT (Of Guards and Thieves) gaming community. It features articles, author profiles, category browsing, a community section, and more.
+This is a satire news website project built using Next.js, designed to deliver news about the OGAT (Of Guards and Thieves) gaming community. It features articles, author profiles, category browsing, a community section, like, commends, discord notification and more.
 
 ## Features
 
@@ -27,6 +27,7 @@ This is a satire news website project built using Next.js, designed to deliver n
 *   **Cloudflare Turnstile:** Spam protection.
 *   **Tailwind CSS:** Utility-first CSS framework.
 *   **Contentful:** Headless CMS for content management.
+*   **Discord Webhook:** For discord notification.
 *   **Shadcn/ui:** UI component library
 
 
@@ -58,6 +59,7 @@ This is a satire news website project built using Next.js, designed to deliver n
         CONTENTFUL_SPACE_ID=<your_contentful_space_id>
         CONTENTFUL_ACCESS_TOKEN=<your_contentful_access_token>
          CONTENTFUL_BRANCH=<your_contentful_environment_branch>
+         ...
         ```
     *   You can copy/paste this from the provided file `sample.env.local`
 

@@ -48,7 +48,7 @@ const CommentsView = (props: CommentsViewProps) => {
       }),
     });
     if (!response.ok) {
-      throw new Error("Failed to delete comment");
+      throw new Error("Failed to remove comment", );
     }
   };
   return (
