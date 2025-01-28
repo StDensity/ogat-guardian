@@ -6,8 +6,8 @@ import Image from "next/image";
 import { SportNewsResult, TypeSportsNews } from "@/types/contentful/types";
 import Link from "next/link";
 import LikeButton from "@/components/news-article/LikeButton";
-import { CommentForm } from "@/components/news-article/CommentForm";
-import CommentsView from "@/components/news-article/CommentsView";
+import { CommentForm } from "@/components/news-article/comments/CommentForm";
+import CommentsView from "@/components/news-article/comments/CommentsView";
 
 interface SportsArticleViewerProps {
   newsData: TypeSportsNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;

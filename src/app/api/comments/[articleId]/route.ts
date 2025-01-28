@@ -31,7 +31,7 @@ export async function GET(
     }
 
     return NextResponse.json(data);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
@@ -79,7 +79,7 @@ export async function POST(
     );
 
     const data = await res.json();
-    
+
     if (!data.success) {
       throw new Error("Captcha Verification failed");
     }
@@ -100,7 +100,39 @@ export async function POST(
       { message: "Comment added successfully" },
       { status: 201 },
     );
-  } catch (err) {
+  } catch {
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
+  }
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { articleId: string } },
+) {
+  const { articleId: comment } = params;
+
+  try {
+    if (!comment) {
+      return NextResponse.json(
+        { error: "Comment id is required" },
+        { status: 400 },
+      );
+    }
+
+    const { error } = await supabase
+      .from("comments")
+      .delete()
+      .eq("id", comment);
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ message: "Comment deleted successfully" });
+  } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },

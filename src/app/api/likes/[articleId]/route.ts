@@ -29,7 +29,7 @@ export async function GET(
     }
 
     return NextResponse.json({ count, data });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
@@ -79,7 +79,7 @@ export async function POST(
 
     // Return the inserted like data
     return NextResponse.json({ data }, { status: 201 });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
@@ -126,7 +126,7 @@ export async function DELETE(
 
     // Return the inserted like data
     return NextResponse.json({ data }, { status: 200 });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },

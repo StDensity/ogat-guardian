@@ -5,9 +5,9 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ArticleImageCarousel from "@/components/news-article/ArticleImageCarousel";
 import { TypeNormalNews } from "@/types/contentful/types";
 import Link from "next/link";
-import { CommentForm } from "@/components/news-article/CommentForm";
+import { CommentForm } from "@/components/news-article/comments/CommentForm";
 import LikeButton from "@/components/news-article/LikeButton";
-import CommentsView from "@/components/news-article/CommentsView";
+import CommentsView from "@/components/news-article/comments/CommentsView";
 
 interface NormalArticleViewerProps {
   newsData: TypeNormalNews<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">;
