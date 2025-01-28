@@ -10,7 +10,7 @@ export async function GET(
   request: Request,
   { params }: { params: { articleId: string } },
 ) {
-  const { articleId } = params;
+  const { articleId } = await params;
 
   if (!articleId) {
     return NextResponse.json(
@@ -24,6 +24,7 @@ export async function GET(
       .from("comments")
       .select("*")
       .eq("article_id", articleId)
+      .eq("is_hidden", false)
       .order("created_at", { ascending: false });
 
     if (error) {
