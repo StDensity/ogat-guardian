@@ -5,6 +5,7 @@ import React, { useState } from "react";
 
 interface CommentOptionsProps {
   commentId: string;
+
   handleDelete(commentId: string): void;
 }
 

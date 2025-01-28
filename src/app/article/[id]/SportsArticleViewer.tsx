@@ -41,7 +41,14 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
             </div>
           </div>
         </Link>
-        <LikeButton articleId={props.newsData.sys.id} />
+        <LikeButton
+          titleUrl={
+            "https://ogatguardian.vercel.app/article/" +
+            props.newsData.sys.id
+          }
+          title={props.newsData.fields.newsTitle}
+          articleId={props.newsData.sys.id}
+        />
       </div>
 
       {props.newsData.fields.images && (
@@ -149,8 +156,14 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
           })}
       </div>
       <div className="pt-4">
-        <CommentForm articleId={props.newsData.sys.id} />
-        <CommentsView articleId={props.newsData.sys.id} />
+        <CommentForm
+          articleTitle={props.newsData.fields.newsTitle}
+          articleId={props.newsData.sys.id}
+        />
+        <CommentsView
+          articleTitle={props.newsData.fields.newsTitle}
+          articleId={props.newsData.sys.id}
+        />
       </div>
     </div>
   );

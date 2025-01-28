@@ -45,7 +45,13 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
             </div>
           </div>
         </Link>
-        <LikeButton articleId={props.newsData.sys.id} />
+        <LikeButton
+          titleUrl={
+            "https://ogatguardian.vercel.app/article/" + props.newsData.sys.id
+          }
+          title={props.newsData.fields.newsTitle}
+          articleId={props.newsData.sys.id}
+        />
       </div>
       <div>
         {<ArticleImageCarousel imageData={props.newsData.fields.images} />}
@@ -60,8 +66,14 @@ const NormalArticleViewer = (props: NormalArticleViewerProps) => {
       <p className="text-sm italic text-gray-400">
         {props.newsData.fields.footnote}
       </p>
-      <CommentForm articleId={props.newsData.sys.id} />
-      <CommentsView articleId={props.newsData.sys.id} />
+      <CommentForm
+        articleTitle={props.newsData.fields.newsTitle}
+        articleId={props.newsData.sys.id}
+      />
+      <CommentsView
+        articleId={props.newsData.sys.id}
+        articleTitle={props.newsData.fields.newsTitle}
+      />
     </div>
   );
 };

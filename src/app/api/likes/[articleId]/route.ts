@@ -42,17 +42,17 @@ export async function POST(
   { params }: { params: { articleId: string } },
 ) {
   const { articleId } = await params;
-
-  if (!articleId) {
+  const { title, client_hash, titleUrl } = await request.json();
+  console.log(title, client_hash, titleUrl)
+  if (!articleId || !client_hash) {
     return NextResponse.json(
-      { error: "articleId is required" },
+      { error: "articleId and client_hash is required" },
       { status: 400 },
     );
   }
 
   try {
     // Parse the request body
-    const { client_hash } = await request.json();
 
     // Validate required fields
     if (!client_hash) {
@@ -76,6 +76,34 @@ export async function POST(
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
+
+    try {
+      const webhookUrl = process.env.DISCORD_CHANNEL_WEBHOOK!;
+      const embed = {
+        title: title,
+        url: titleUrl,
+        description: `**New Like Received**`,
+        color: 0x00ff00, // Green color (hexadecimal)
+
+        timestamp: new Date().toISOString(),
+        footer: {
+          text: "A #MOGA Initiative by The Guardian News.",
+        },
+      };
+
+      // Message payload with embed
+      const message = {
+        embeds: [embed],
+      };
+
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+    } catch {}
 
     // Return the inserted like data
     return NextResponse.json({ data }, { status: 201 });

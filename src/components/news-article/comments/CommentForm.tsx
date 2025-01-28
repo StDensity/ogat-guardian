@@ -4,7 +4,12 @@ import { useState } from "react";
 import { useClientHash } from "@/hooks/useClientHash";
 import Turnstile from "react-turnstile";
 
-export const CommentForm = ({ articleId }: { articleId: string }) => {
+interface CommentFormProps {
+  articleId: string;
+  articleTitle: string;
+}
+
+export const CommentForm = ({ articleId, articleTitle }: CommentFormProps) => {
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,6 +47,7 @@ export const CommentForm = ({ articleId }: { articleId: string }) => {
           content,
           client_hash: clientHash,
           captchaToken,
+          articleTitle
         }),
       });
 

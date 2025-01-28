@@ -46,7 +46,7 @@ export async function POST(
   request: Request,
   { params }: { params: { articleId: string } },
 ) {
-  const { articleId } = params;
+  const { articleId } = await params;
 
   if (!articleId) {
     return NextResponse.json(
@@ -57,7 +57,8 @@ export async function POST(
 
   try {
     // Parse the request body
-    const { content, client_hash, captchaToken } = await request.json();
+    const { content, client_hash, captchaToken, articleTitle } =
+      await request.json();
 
     if (!content || !client_hash) {
       return NextResponse.json(
@@ -84,6 +85,40 @@ export async function POST(
     if (!data.success) {
       throw new Error("Captcha Verification failed");
     }
+
+    // Sends message to discord
+    try {
+      const webhookUrl = process.env.DISCORD_CHANNEL_WEBHOOK!;
+      const embed = {
+        title: articleTitle,
+        url: "https://ogatguardian.vercel.app/article/" + articleId,
+        description: `**New comment added**`,
+        color: 0x00ff00, // Green color (hexadecimal)
+        fields: [
+          {
+            name: "Comment",
+            value: content,
+          },
+        ],
+        timestamp: new Date().toISOString(),
+        footer: {
+          text: "A #MOGA Initiative by The Guardian News.",
+        },
+      };
+
+      // Message payload with embed
+      const message = {
+        embeds: [embed],
+      };
+
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+    } catch {}
 
     // Insert the new comment into the database
     const { error } = await supabase.from("comments").insert({
@@ -113,8 +148,10 @@ export async function DELETE(
   request: Request,
   { params }: { params: { articleId: string } },
 ) {
-  const { articleId: commentId } = params;
+  const { articleId: commentId } = await params;
 
+  const { content, articleId, articleTitle } = await request.json();
+  console.log(content, articleId, articleTitle);
   try {
     if (!commentId) {
       return NextResponse.json(
@@ -124,13 +161,49 @@ export async function DELETE(
     }
 
     const { error } = await supabase
-    .from('comments') // Replace with your table name
-    .update({ is_hidden: true }) // Set is_hidden to true
-    .eq('id', commentId); // Match the commentid", comment);
+      .from("comments")
+      .update({ is_hidden: true })
+      .eq("id", commentId);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
+
+    try {
+      console.log("sending messge");
+      const webhookUrl = process.env.DISCORD_CHANNEL_WEBHOOK!;
+      const embed = {
+        title: articleTitle,
+        url: "https://ogatguardian.vercel.app/article/" + articleId,
+        description: `**Comment removed by a mod**`,
+        color: 0x00ff00, // Green color (hexadecimal)
+        fields: [
+          {
+            name: "Comment",
+            value: content,
+          },
+        ],
+        timestamp: new Date().toISOString(),
+        footer: {
+          text: "A #MOGA Initiative by The Guardian News.",
+        },
+      };
+      console.log("sending messge");
+
+      // Message payload with embed
+      const message = {
+        embeds: [embed],
+      };
+
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+      console.log("response: ", content);
+    } catch {}
 
     return NextResponse.json({ message: "Comment hidden successfully" });
   } catch {

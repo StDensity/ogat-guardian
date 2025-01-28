@@ -7,6 +7,7 @@ import CommentOptions from "./CommentOptions";
 
 interface CommentsViewProps {
   articleId: string;
+  articleTitle: string;
 }
 
 const CommentsView = (props: CommentsViewProps) => {
@@ -26,6 +27,7 @@ const CommentsView = (props: CommentsViewProps) => {
   }, [props.articleId]);
 
   const handleDelete = async (commentId: string) => {
+    const comment = comments.filter((comment) => comment.id === commentId)[0];
     const password = prompt(
       "Please enter the mod password to confirm deletion:",
     );
@@ -36,6 +38,14 @@ const CommentsView = (props: CommentsViewProps) => {
     setComments((prev) => prev.filter((comment) => comment.id !== commentId));
     const response = await fetch(`/api/comments/${commentId}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: comment.content,
+        articleTitle: props.articleTitle,
+        articleId: props.articleId,
+      }),
     });
     if (!response.ok) {
       throw new Error("Failed to delete comment");

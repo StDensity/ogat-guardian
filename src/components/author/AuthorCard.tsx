@@ -56,7 +56,10 @@ const AuthorCard = ({
             (authorSportsNewsArticleCount[authorDetails.sys.id] || 0) +
             "📄" || '"I take photos...Cheese..."'}
         </p>
-        <LikeButton articleId={authorDetails.sys.id} />
+        <LikeButton
+          title={authorDetails.fields.name} titleUrl={"https://ogatguardian.vercel.app/authors/" + authorDetails.sys.id  }
+          articleId={authorDetails.sys.id}
+        />
       </CardContent>
 
       <CardFooter>

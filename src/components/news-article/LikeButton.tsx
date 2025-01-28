@@ -6,7 +6,13 @@ import { Heart } from "lucide-react";
 
 import { Like } from "@/types/database";
 
-export default function LikeButton({ articleId }: { articleId: string }) {
+interface LikeButtonProps {
+  articleId: string;
+  title: string;
+  titleUrl: string
+}
+
+export default function LikeButton(props: LikeButtonProps) {
   const [likes, setLikes] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
   const clientHash = useClientHash();
@@ -14,7 +20,7 @@ export default function LikeButton({ articleId }: { articleId: string }) {
   useEffect(() => {
     const checkLikes = async () => {
       // Get like count and data
-      const response = await fetch(`/api/likes/${articleId}`);
+      const response = await fetch(`/api/likes/${props.articleId}`);
 
       if (!response) {
         setLikes(0);
@@ -31,19 +37,21 @@ export default function LikeButton({ articleId }: { articleId: string }) {
     };
 
     checkLikes();
-  }, [articleId, clientHash]);
+  }, [props.articleId, clientHash]);
 
   const handleLike = async () => {
     // Return if unable to generate client hash
     if (!clientHash) return;
     // If already liked removing like
     else if (hasLiked) {
-      const response = await fetch(`/api/likes/${articleId}`, {
+      const response = await fetch(`/api/likes/${props.articleId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ client_hash: clientHash }),
+        body: JSON.stringify({
+          client_hash: clientHash,
+        }),
       });
       if (!response.ok) return;
       setLikes((prev) => prev - 1);
@@ -52,12 +60,16 @@ export default function LikeButton({ articleId }: { articleId: string }) {
     }
 
     // Adding new like
-    const response = await fetch(`/api/likes/${articleId}`, {
+    const response = await fetch(`/api/likes/${props.articleId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ client_hash: clientHash }),
+      body: JSON.stringify({
+        client_hash: clientHash,
+        title: props.title,
+        titleUrl: props.titleUrl,
+      }),
     });
     if (!response.ok) return;
     setHasLiked(true);
