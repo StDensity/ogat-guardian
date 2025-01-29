@@ -8,7 +8,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function GET(
   request: Request,
-  { params }: { params: { articleId: string } },
+  { params }: { params:  Promise<{ articleId: string }> },
 ) {
   const { articleId } = await params;
 
@@ -44,7 +44,7 @@ export async function GET(
 
 export async function POST(
   request: Request,
-  { params }: { params: { articleId: string } },
+  { params }: { params:  Promise<{ articleId: string }> },
 ) {
   const { articleId } = await params;
 
@@ -146,7 +146,7 @@ export async function POST(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { articleId: string } },
+  { params }: { params:  Promise<{ articleId: string }> },
 ) {
   const { articleId: commentId } = await params;
 

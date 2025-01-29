@@ -3,7 +3,7 @@ import SHA256 from "crypto-js/sha256";
 
 export async function GET(
   request: Request,
-  { params }: { params: { modPassword: string } },
+  { params }: { params:  Promise<{ modPassword: string }> },
 ) {
   try {
     const { modPassword } = await params;

@@ -74,7 +74,7 @@ import { notFound } from "next/navigation";
 export const generateMetadata = async ({
   params,
 }: {
-  params: { categoryName: string };
+  params:  Promise<{ categoryName: string }>;
 }): Promise<Metadata> => {
   const categoryData = await getAllNewsCategories();
   const { categoryName } = await params;
@@ -132,7 +132,7 @@ export const generateMetadata = async ({
 const CategoryPage = async ({
   params,
 }: {
-  params: { categoryName: string };
+  params:  Promise<{ categoryName: string }>;
 }) => {
   const categoryData = await getAllNewsCategories();
   const { categoryName } = await params;
