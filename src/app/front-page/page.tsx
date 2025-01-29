@@ -15,9 +15,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     if (!sortedNews.length) {
       return {
-        title: "Latest News Updates | Your Site Name",
+        title: "Latest News | OGAT Guardian ",
         description:
-          "Stay informed with the latest news updates from Your Site Name",
+          "Stay informed with the latest news updates from OGAT Guardian",
       };
     }
 
@@ -27,9 +27,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
       : "/ogat_guardian_img.png";
 
     return {
-      title: `${latestNews.newsTitle} | Your Site Name`,
+      title: `${latestNews.newsTitle} | OGAT Guardian`,
       description:
-        latestNews.summary || "Latest news update from Your Site Name",
+        latestNews.summary || "Latest news update from OGAT Guardian",
       keywords:
         latestNews.category?.join(", ") || "news, updates, current affairs",
       alternates: {
@@ -38,7 +38,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       openGraph: {
         title: latestNews.newsTitle,
         description:
-          latestNews.summary || "Latest news update from Your Site Name",
+          latestNews.summary || "Latest news update from OGAT Guardian",
         url: `https://ogatguardian.vercel.app/article/${sortedNews[0].sys.id}`,
         type: "article",
         publishedTime: latestNews.date,
@@ -58,13 +58,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
         card: "summary_large_image",
         title: latestNews.newsTitle,
         description:
-          latestNews.summary || "Latest news update from Your Site Name",
+          latestNews.summary || "Latest news update from OGAT Guardian",
         images: [imageUrl],
       },
     };
   } catch (error) {
     return {
-      title: "Latest News | Your Site Name",
+      title: "Latest News | OGAT Guardian",
       description: "Stay updated with the latest news and current affairs",
     };
   }

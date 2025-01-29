@@ -25,13 +25,15 @@ const page = () => {
     <div className="m-8 flex min-h-[70vh] items-center justify-center font-open_sans">
       <div className="">
         <div className="text-xl font-bold">Join us on Discord</div>
-        <div className="pb-4">Interact with other Guardian News readers an journalists.</div>
+        <div className="pb-4">
+          Interact with other Guardian News readers an journalists.
+        </div>
         <DiscordInvite
-            imgUrl={"/ogat_guardian_img_small.png"}
-            serverName={"The Guardian News"}
-            inviteLink={"https://discord.com/invite/y9tQGXnnAe"}
-            altText="The Guardian News"
-          />
+          imgUrl={"/ogat_guardian_img_small.png"}
+          serverName={"The Guardian News"}
+          inviteLink={"https://discord.com/invite/y9tQGXnnAe"}
+          altText="The Guardian News"
+        />
       </div>
     </div>
   );
