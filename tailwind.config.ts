@@ -17,6 +17,8 @@ export default {
       colors: {
         guardianBlue: "#288BDE",
         customDarkBlue: "#1D4A90",
+        discordBlack: "#1e1f22",
+        discordBlue: "#5865f2",
 
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

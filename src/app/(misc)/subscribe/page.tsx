@@ -41,7 +41,12 @@ const page = () => {
         </div>
 
         <div>
-          <DiscordInvite />
+          <DiscordInvite
+            imgUrl={"/ogat_guardian_img_small.png"}
+            serverName={"The Guardian News"}
+            inviteLink={"https://discord.com/invite/y9tQGXnnAe"}
+            altText="The Guardian News"
+          />
         </div>
       </div>
     </div>

@@ -26,7 +26,12 @@ const page = () => {
       <div className="">
         <div className="text-xl font-bold">Join us on Discord</div>
         <div className="pb-4">Interact with other Guardian News readers an journalists.</div>
-        <DiscordInvite />
+        <DiscordInvite
+            imgUrl={"/ogat_guardian_img_small.png"}
+            serverName={"The Guardian News"}
+            inviteLink={"https://discord.com/invite/y9tQGXnnAe"}
+            altText="The Guardian News"
+          />
       </div>
     </div>
   );
