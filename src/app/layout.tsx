@@ -47,11 +47,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Analytics />
           <Header />
           <Navbar />
           {children}
           <Footer />
+          <Analytics />
           <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
         </ThemeProvider>
       </body>
