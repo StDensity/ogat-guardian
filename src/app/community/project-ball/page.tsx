@@ -6,7 +6,7 @@ import Hero from "./Hero";
 
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://defaultdomain.com";
+    process.env.NEXT_PUBLIC_BASE_URL!;
   const title = "Project Ball | Ogat Guardian Logo Controversy";
   const description =
     "Discover why Ogat Guardian logo appeared in Project Ball. Explore developer regrets, hidden logo sightings, and join our community scavenger hunt.";
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Project Ball Community",
       images: [
         {
-          url: `${baseUrl}/community/bg-image-fallback.png`,
+          url: `/community/bg-image-fallback.png`,
           width: 1200,
           height: 630,
           alt: "Project Ball developers standing in stadium with controversial logo",
@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: title,
       description: description,
-      images: [`${baseUrl}/community/bg-image-fallback.png`],
+      images: [`$/community/bg-image-fallback.png`],
       creator: "@ProjectBallTeam",
     },
     robots: {
