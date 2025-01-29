@@ -11,10 +11,8 @@ interface DiscordInviteProps {
 const DiscordInvite = (props: DiscordInviteProps) => {
   return (
     <div>
-      <div className="bg-gray-200 p-2">
-        <div className="font-bold text-gray-400">
-          You have been invited to join a server
-        </div>
+      <div className="bg-discordBlack rounded-lg p-2 text-white">
+        <div className="font-bold">You have been invited to join a server</div>
         <div className="flex items-center justify-between gap-4 px-4 py-2">
           <div>
             <Image
@@ -31,7 +29,7 @@ const DiscordInvite = (props: DiscordInviteProps) => {
           </div>
           <div className="">
             <a
-              className="hover:brightness-70 bg-gray-400 px-6 py-4"
+              className="hover:brightness-70 bg-guardianBlue rounded-lg px-6 py-4 hover:bg-opacity-75"
               href={props.inviteLink}
             >
               Join

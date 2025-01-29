@@ -9,29 +9,65 @@ import SportsHeadlines from "./SportsHeadlines";
 import { Metadata } from "next";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const newsData = await getAllNormalNews();
-  const sortedNews = sortedDateLatestFirst(newsData);
-  return {
-    title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
-    description: "Your page description",
+  try {
+    const newsData = await getAllNormalNews();
+    const sortedNews = sortedDateLatestFirst(newsData);
 
-    openGraph: {
-      type: "article", // Specifies content type
-      authors: [sortedNews[0].fields.author?.fields.name || ""], // Array of authors
-      section: sortedNews[0].fields.category[0]?.fields.name || "News", // News category/section
-      title: `Latest News: ${sortedNews[0]?.fields.newsTitle}`,
-      description: `${sortedNews[0]?.fields.summary}`,
-      images: [
-        {
-          url: sortedNews[0].fields.images
-            ? `https:${sortedNews[0].fields.images[0]?.fields.file?.url}`
-            : "/ogat_guardian_img.png",
-          width: 1200,
-          height: 630,
-        },
-      ],
-    },
-  };
+    if (!sortedNews.length) {
+      return {
+        title: "Latest News Updates | Your Site Name",
+        description:
+          "Stay informed with the latest news updates from Your Site Name",
+      };
+    }
+
+    const latestNews = sortedNews[0]?.fields;
+    const imageUrl = latestNews.images?.[0]?.fields.file?.url
+      ? `https:${latestNews.images[0].fields.file.url}`
+      : "/ogat_guardian_img.png";
+
+    return {
+      title: `${latestNews.newsTitle} | Your Site Name`,
+      description:
+        latestNews.summary || "Latest news update from Your Site Name",
+      keywords:
+        latestNews.category?.join(", ") || "news, updates, current affairs",
+      alternates: {
+        canonical: `https://ogatguardian.vercel.app/article/${sortedNews[0].sys.id}`,
+      },
+      openGraph: {
+        title: latestNews.newsTitle,
+        description:
+          latestNews.summary || "Latest news update from Your Site Name",
+        url: `https://ogatguardian.vercel.app/article/${sortedNews[0].sys.id}`,
+        type: "article",
+        publishedTime: latestNews.date,
+        authors: [latestNews.author?.fields.name || "Editorial Team"],
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt:
+              latestNews.images?.[0]?.fields.file?.fileName ||
+              latestNews.newsTitle,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: latestNews.newsTitle,
+        description:
+          latestNews.summary || "Latest news update from Your Site Name",
+        images: [imageUrl],
+      },
+    };
+  } catch (error) {
+    return {
+      title: "Latest News | Your Site Name",
+      description: "Stay updated with the latest news and current affairs",
+    };
+  }
 };
 
 const FrontPage = async () => {
@@ -43,7 +79,7 @@ const FrontPage = async () => {
   return (
     <section className="container mx-auto min-h-[80vh]">
       <div className="md:hidden">
-        <p className="text-center text-xl font-bold">Headlines</p>
+        <h1 className="text-center text-xl font-bold">Headlines</h1>
         <VerticalArticleCard newsData={latestFirstNormalNews[0]} />
         <VerticalArticleCard newsData={latestFirstNormalNews[1]} />
         <VerticalArticleCard newsData={latestFirstNormalNews[2]} />
@@ -65,16 +101,28 @@ const FrontPage = async () => {
 
       <div className="hidden md:block">
         {/* Headlines */}
-        <Headlines newsData={latestFirstNormalNews.slice(0, 2)} />
+        <Headlines
+          aria-label={"Headlines"}
+          newsData={latestFirstNormalNews.slice(0, 2)}
+        />
 
         {/* SubHeadlines */}
-        <SubHeadlines newsData={latestFirstNormalNews.slice(2, 7)} />
+        <SubHeadlines
+          aria-label={"Sub Headlines"}
+          newsData={latestFirstNormalNews.slice(2, 7)}
+        />
 
         {/* OgatHeadlines */}
-        <OgatHeadlines newsData={latestFirstNormalNews.slice(7, 9)} />
+        <OgatHeadlines
+          aria-label={"OGAT Headlines"}
+          newsData={latestFirstNormalNews.slice(7, 9)}
+        />
 
         {/* SportsHeadlines */}
-        <SportsHeadlines newsData={latestFirstSportsNews.slice(0, 2)} />
+        <SportsHeadlines
+          aria-label={"Sports Headlines"}
+          newsData={latestFirstSportsNews.slice(0, 2)}
+        />
       </div>
     </section>
   );
