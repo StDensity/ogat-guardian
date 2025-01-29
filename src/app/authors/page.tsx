@@ -2,6 +2,7 @@ import { getAllAuthors } from "@/app/lib/dataFetcher";
 import React from "react";
 import AuthorsRenderer from "./AuthorsRenderer";
 import { Metadata } from "next";
+import { TypeAuthor } from "@/types/contentful/types";
 
 // export const generateMetadata = (): Metadata => {
 //   return {
@@ -71,8 +72,7 @@ export const generateMetadata = (): Metadata => {
 };
 
 const page = async () => {
-  let authorsData;
-  authorsData = await getAllAuthors();
+  const authorsData = await getAllAuthors();
 
   return (
     <main className="container mx-auto min-h-[70vh] px-4 py-8">
@@ -95,15 +95,15 @@ const page = async () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ItemList",
-          itemListElement: authorsData.map((author: any, index: number) => ({
+          itemListElement: authorsData.map((author: TypeAuthor<"WITHOUT_UNRESOLVABLE_LINKS", "en-US">, index: number) => ({
             "@type": "ListItem",
             position: index + 1,
             item: {
               "@type": "Person",
               name: author.fields.name,
-              description: author.fields.bio,
-              image: author.fields.profilePhoto?.fields.file?.url
-                ? `https://${author.fields.profilePhoto.fields.file.url}`
+              description: author.fields.role,
+              image: author.fields.avatar?.fields.file?.url
+                ? `https://${author.fields.avatar.fields.file.url}`
                 : "/images/authors.png",
               url: `https://yourdomain.com/authors/${author.sys.id}`,
               worksFor: {

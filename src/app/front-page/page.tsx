@@ -62,7 +62,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
         images: [imageUrl],
       },
     };
-  } catch (error) {
+  } catch {
     return {
       title: "Latest News | OGAT Guardian",
       description: "Stay updated with the latest news and current affairs",

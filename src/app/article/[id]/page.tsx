@@ -65,7 +65,7 @@ export async function generateMetadata({
       },
       keywords: fields.category?.join(", ") || category,
     };
-  } catch (error) {
+  } catch  {
     return {
       title: "Article Error - The OGAT Guardian",
       description: "There was an error loading this article",

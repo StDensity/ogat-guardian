@@ -93,7 +93,7 @@ const page = () => {
 
         {/* Add privacy assurance */}
         <p className="text-center text-xs text-muted-foreground">
-          We don't respect your privacy.
+          {`We don't respect your privacy.`}
         </p>
       </div>
     </div>
