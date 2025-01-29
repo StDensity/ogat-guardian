@@ -66,7 +66,7 @@ export default function ProjectBallPage() {
         "Experience the thrill of being a goalie in Project Ball. 'With your hands stretched'.",
       reverse: false,
       tag: "",
-      fallbackImg: "community/goalie-1-fallback.png",
+      fallbackImg: "/community/goalie-1-fallback.png",
     },
     {
       videoSrc:
@@ -75,7 +75,7 @@ export default function ProjectBallPage() {
       description:
         "When feeling left out, you can always count on the 'goalie watch'.",
       tag: "Big Screen donated by The Guardian",
-      fallbackImg: "community/goalie-2-fallback.png",
+      fallbackImg: "/community/goalie-2-fallback.png",
     },
 
     {
@@ -84,7 +84,7 @@ export default function ProjectBallPage() {
       title: "Ever felt like running is outdated?",
       description: "No more worries, slide like a champ!",
       reverse: false,
-      fallbackImg: "community/redefined-walking-fallback.png",
+      fallbackImg: "/community/redefined-walking-fallback.png",
     },
     {
       videoSrc:
@@ -92,7 +92,7 @@ export default function ProjectBallPage() {
       title: "No referees included!!",
       description:
         "Here you can exercise your free wills. 'No fouls, no offside, no mercy'.",
-      fallbackImg: "community/no-referee-fallback.png",
+      fallbackImg: "/community/no-referee-fallback.png",
     },
     {
       videoSrc:
@@ -101,7 +101,7 @@ export default function ProjectBallPage() {
       description:
         "We have the perfect solution for you. 'Just kick him harder'.",
       reverse: false,
-      fallbackImg: "community/no-referee-2-fallback.png",
+      fallbackImg: "/community/no-referee-2-fallback.png",
     },
     {
       videoSrc:
@@ -110,7 +110,7 @@ export default function ProjectBallPage() {
       description:
         "Grab a coke and enjoy the game. Our real life Immersive 'goalie watch' will keep you entertained, it's not VR it's just R.",
       tag: "Big Screen donated by The Guardian",
-      fallbackImg: "community/grab-a-coke-fallback.png",
+      fallbackImg: "/community/grab-a-coke-fallback.png",
     },
   ];
 
@@ -131,7 +131,7 @@ export default function ProjectBallPage() {
             quote="Should've sticked with ogat 2'"
             videoSrc="https://videos.ctfassets.net/blh9d07agz8n/3yRUXB53wUeBerqBycEx3m/007bb5e121b58cabf0df5754ad13767d/Juggling.mp4"
             avatarSrc="/community/comi.png"
-            fallbackImg="community/juggling-fallback.png"
+            fallbackImg="/community/juggling-fallback.png"
           />
 
           <DeveloperCard
@@ -140,7 +140,7 @@ export default function ProjectBallPage() {
             quote="The logo reduces the ball gravity by .6% - trust me bro"
             videoSrc="https://videos.ctfassets.net/blh9d07agz8n/45Kl45SUNex5slGuO20BGA/44ca04d4a941ceb2d7b51eb019eada5b/Ball-Physics.mp4"
             avatarSrc="/community/jm.png"
-            fallbackImg="community/ball-physics-fallback.png"
+            fallbackImg="/community/ball-physics-fallback.png"
           />
         </div>
       </section>
