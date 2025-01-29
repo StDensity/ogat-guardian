@@ -50,7 +50,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
+          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID!} />
         </ThemeProvider>
       </body>
     </html>
