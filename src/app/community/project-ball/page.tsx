@@ -66,7 +66,7 @@ export default function ProjectBallPage() {
         "Experience the thrill of being a goalie in Project Ball. 'With your hands stretched'.",
       reverse: false,
       tag: "",
-      fallbackImg: "goalie-1-fallback.png",
+      fallbackImg: "community/goalie-1-fallback.png",
     },
     {
       videoSrc:
@@ -75,7 +75,7 @@ export default function ProjectBallPage() {
       description:
         "When feeling left out, you can always count on the 'goalie watch'.",
       tag: "Big Screen donated by The Guardian",
-      fallbackImg: "goalie-2-fallback.png",
+      fallbackImg: "community/goalie-2-fallback.png",
     },
 
     {
@@ -84,7 +84,7 @@ export default function ProjectBallPage() {
       title: "Ever felt like running is outdated?",
       description: "No more worries, slide like a champ!",
       reverse: false,
-      fallbackImg: "redefined-walking-fallback.png",
+      fallbackImg: "community/redefined-walking-fallback.png",
     },
     {
       videoSrc:
@@ -92,7 +92,7 @@ export default function ProjectBallPage() {
       title: "No referees included!!",
       description:
         "Here you can exercise your free wills. 'No fouls, no offside, no mercy'.",
-      fallbackImg: "no-referee-fallback.png",
+      fallbackImg: "community/no-referee-fallback.png",
     },
     {
       videoSrc:
@@ -101,7 +101,7 @@ export default function ProjectBallPage() {
       description:
         "We have the perfect solution for you. 'Just kick him harder'.",
       reverse: false,
-      fallbackImg: "no-referee-2-fallback.png",
+      fallbackImg: "community/no-referee-2-fallback.png",
     },
     {
       videoSrc:
@@ -110,7 +110,7 @@ export default function ProjectBallPage() {
       description:
         "Grab a coke and enjoy the game. Our real life Immersive 'goalie watch' will keep you entertained, it's not VR it's just R.",
       tag: "Big Screen donated by The Guardian",
-      fallbackImg: "grab-a-coke-fallback.png",
+      fallbackImg: "community/grab-a-coke-fallback.png",
     },
   ];
 
