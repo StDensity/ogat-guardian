@@ -11,10 +11,7 @@ const Hero = () => {
   
 
   useEffect(() => {
-    // const getVideoSrc = async () => {
-    //     const videoAsset = await getAssetById("5YyQNczBgcHfuoMjf7M98O");
-    //     setVideoSrc(videoAsset.fields.file?.url || "");
-    //     }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100); // Adjust 100 to match your header height
     };
@@ -33,7 +30,7 @@ const Hero = () => {
         muted
         loop
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        poster="community/bg-image-fallback.png"
+        poster="/community/bg-image-fallback.png"
       >
         <source
           src={"https://videos.ctfassets.net/blh9d07agz8n/5aJFEhogD4Vm8ZngPXK7Jj/9fbabcfced406c0b0b17ca9cae158f4c/Background_Video_Project_Ball.mp4"}
