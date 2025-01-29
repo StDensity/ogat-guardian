@@ -1,3 +1,4 @@
+import Testimonial from "@/components/misc/Testimonials";
 import { Metadata } from "next";
 import React from "react";
 
@@ -143,7 +144,7 @@ const AboutSchema = () => (
 
 const page = () => {
   return (
-    <main className="flex min-h-[80vh] items-center justify-center font-open_sans">
+    <main className="flex flex-col min-h-[80vh] items-center justify-center font-open_sans">
       <AboutSchema />
       <article className="m-8 max-w-[840px] rounded-md bg-gradient-to-b from-slate-200 to-blue-200 shadow-lg shadow-blue-100">
         <div className="m-0.5 rounded-md bg-gray-50 p-8">
@@ -192,6 +193,12 @@ const page = () => {
           </section>
         </div>
       </article>
+      <section aria-labelledby="Testimonials">
+        <Testimonial
+          name="Comi, Developer OGAT"
+          quote="How's my favorite newspaper going?"
+        />
+      </section>
     </main>
   );
 };
