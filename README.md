@@ -29,6 +29,7 @@ This is a satire news website project built using Next.js, designed to deliver n
 - **Contentful:** Headless CMS for content management.
 - **Discord Webhook:** For discord notification.
 - **Shadcn/ui:** UI component library
+- **Google and Vercel Analytics:** For traffic statistics.
 
 ## Getting Started
 
@@ -83,4 +84,4 @@ This is a satire news website project built using Next.js, designed to deliver n
 
 If you'd like to contribute to this project, feel free to fork the repository and submit a pull request.
 
-This readme is drafted by [aitudio](https://aistudio.google.com/prompts) and used [mufeedvh/code2prompt](https://github.com/mufeedvh/code2prompt) to generate LLM prompt.
+This readme is drafted by [aistudio](https://aistudio.google.com/prompts) and used [mufeedvh/code2prompt](https://github.com/mufeedvh/code2prompt) to generate LLM prompt.
