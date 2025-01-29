@@ -1,29 +1,50 @@
 import React from "react";
-
 import { Metadata } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
+
 export const metadata: Metadata = {
-  title: "OGATCHAT Podcast Episodes Archive | OGAT Guardian",
-  description: "The complete collection of OGATCHAT Podcast episodes - the definitive (and only) OGAT podcast. Featuring hosts Ty (Lick_the_Taint) and Kyle (CallofKyle) with guests like CasualYoutuber31 and MeninisticTraplord. Includes Bug of the Week segments, Madball tournament coverage, and unexpected meditation sessions.",
-    openGraph: {
-    title: "Complete OGATCHAT Podcast Episode Archive",
-    description: "Dive into 15+ episodes of chaotic OGAT coverage - from serious game updates to snack tier lists. Features the legendary Bug of the Week segment and special guests!",
-    url: "/ogatchat",
+  title: "OGATCHAT Podcast Archive | Complete Episode Collection - OGAT Guardian",
+  description: "Official archive of OGAT's definitive podcast featuring Ty & Kyle. Explore 15+ episodes with Madball coverage, Bug of the Week segments, and special guests. Your complete OGAT audio chronicle.",
+  metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: 'community/ogatchat',
+  },
+  openGraph: {
+    title: "OGATCHAT Podcast Archive | Complete Episode Guide",
+    description: "Dive into 15+ chaotic episodes of OGAT coverage - game updates, snack tier lists & accidental meditation. Official archive with timestamps and direct episode links.",
+    url: `${baseUrl}/community/ogatchat`,
     type: "website",
+    locale: "en_US",
+    siteName: "OGAT Guardian",
     images: [
       {
-        url: "/community/ogat-chat-metadata-img.png", // Replace with actual podcast logo path
+        url: `${baseUrl}/community/ogat-chat-metadata-img.png`,
         width: 1200,
         height: 630,
-        alt: "OGATCHAT Podcast logo featuring hosts Ty and Kyle",
+        alt: "OGATCHAT Podcast hosts Ty and Kyle discussing OGAT updates",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OGATCHAT Podcast - The Only OGAT Podcast That Matters",
-    description: "Where game updates meet snack tier lists and accidental meditation - relive all episodes here!",
-    images: ["/ogat-chat-logo.png"], // Match OG image
+    title: "OGATCHAT Podcast Archive - Relive Every OGAT Moment",
+    description: "Where game dev insights meet Madball drama - full episode collection with timestamps & highlights",
+    images: [`${baseUrl}/community/ogat-chat-metadata-img.png`],
+    creator: "@OGATGuardian",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

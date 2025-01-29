@@ -5,7 +5,7 @@ export const generateMetadata = (): Metadata => {
   const title = "Work with us - The Guardian News";
   const description =
     "We are always looking for engaging and creative individuals to join our team at The Guardian News. Apply today!";
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://yourwebsite.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
 
   return {
     title,

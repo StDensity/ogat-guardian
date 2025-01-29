@@ -16,6 +16,9 @@ interface SportsArticleViewerProps {
 const SportsArticleViewer = (props: SportsArticleViewerProps) => {
   return (
     <div className="pb-8 pt-8 font-open_sans">
+      <div className="text-2xl font-bold text-guardianBlue">
+        {props.newsData.fields.header}
+      </div>
       <div className="text-6xl font-bold">
         {props.newsData.fields.newsTitle}
       </div>
@@ -43,8 +46,7 @@ const SportsArticleViewer = (props: SportsArticleViewerProps) => {
         </Link>
         <LikeButton
           titleUrl={
-            "https://ogatguardian.vercel.app/article/" +
-            props.newsData.sys.id
+            "https://ogatguardian.vercel.app/article/" + props.newsData.sys.id
           }
           title={props.newsData.fields.newsTitle}
           articleId={props.newsData.sys.id}
