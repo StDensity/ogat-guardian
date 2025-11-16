@@ -78,11 +78,13 @@ export default function LikeButton(props: LikeButtonProps) {
   };
 
   return (
-    <div className="flex gap-2" onClick={handleLike}>
-      <Heart
-        className={`${hasLiked ? "fill-red-400" : "opacity-65"} cursor-pointer`}
-      />
-      <div className="text-gray-600">{likes}</div>
-    </div>
+    <div></div>
+    // Likes are disabled cause of db issues, to turn it back on just uncomment it and restore supabase db.
+    // <div className="flex gap-2  " onClick={handleLike}>
+    //   <Heart
+    //     className={`${hasLiked ? "fill-red-400" : "opacity-65"} cursor-pointer`}
+    //   />
+    //   <div className="text-gray-600">{likes}</div>
+    // </div>
   );
 }

@@ -53,7 +53,9 @@ const CommentsView = (props: CommentsViewProps) => {
   };
   return (
     <div>
-      {comments.map((comment) => {
+      <div className="italic text-gray-500 text-sm">Due to lack of usage, commends are disabled.</div>
+      {/* To enable just uncomment this and restore supabase db */}
+      {/* {comments.map((comment) => {
         return (
           <div key={comment.id} className="border-b border-gray-200 py-4">
             <div className="mb-2 flex items-center justify-between">
@@ -68,7 +70,7 @@ const CommentsView = (props: CommentsViewProps) => {
             <p className="font-noto_serif text-gray-700">{comment.content}</p>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
