@@ -1,18 +1,21 @@
 import React from "react";
 import { Metadata } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export const metadata: Metadata = {
-  title: "OGATCHAT Podcast Archive | Complete Episode Collection - OGAT Guardian",
-  description: "Official archive of OGAT's definitive podcast featuring Ty & Kyle. Explore 15+ episodes with Madball coverage, Bug of the Week segments, and special guests. Your complete OGAT audio chronicle.",
+  title:
+    "OGATCHAT Podcast Archive | Complete Episode Collection - OGAT Guardian",
+  description:
+    "Official archive of OGAT's definitive podcast featuring Ty & Kyle. Explore 15+ episodes with Madball coverage, Bug of the Week segments, and special guests. Your complete OGAT audio chronicle.",
   metadataBase: new URL(baseUrl),
   alternates: {
-    canonical: 'community/ogatchat',
+    canonical: "community/ogatchat",
   },
   openGraph: {
     title: "OGATCHAT Podcast Archive | Complete Episode Guide",
-    description: "Dive into 15+ chaotic episodes of OGAT coverage - game updates, snack tier lists & accidental meditation. Official archive with timestamps and direct episode links.",
+    description:
+      "Dive into 15+ chaotic episodes of OGAT coverage - game updates, snack tier lists & accidental meditation. Official archive with timestamps and direct episode links.",
     url: `${baseUrl}/community/ogatchat`,
     type: "website",
     locale: "en_US",
@@ -29,7 +32,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "OGATCHAT Podcast Archive - Relive Every OGAT Moment",
-    description: "Where game dev insights meet Madball drama - full episode collection with timestamps & highlights",
+    description:
+      "Where game dev insights meet Madball drama - full episode collection with timestamps & highlights",
     images: [`${baseUrl}/community/ogat-chat-metadata-img.png`],
     creator: "@OGATGuardian",
   },
@@ -41,9 +45,9 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
       noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -154,15 +158,16 @@ const Page = () => {
       <p className="mb-8 border-b-2 pb-4 text-gray-700">
         OGATCHAT Podcast is the #1 OGAT podcast on the internet. Hosted by{" "}
         <span className="font-bold">Ty (Lick_the_Taint)</span> and{" "}
-        <span className="font-bold">Kyle (CallofKyle)</span>. They cover
-        everything OGAT—updates, guides, tournaments, and the legendary “Bug of
-        the Week”. The show also brings in a stellar lineup of guests, like
-        CasualYoutuber31 (Madball expert extraordinaire) and MeninisticTraplord
-        (always ready with a spicy take), to keep things fresh and completely
-        off the rails. Oh, and if you’re into deep dives on snacks, memes, or
-        impromptu meditation sessions, you’re in for a treat. It’s messy, it’s
-        ridiculous, and it’s exactly what you’d expect from the best OGAT
-        podcast in existence.
+        <span className="font-bold">Luke (GraySocks)</span>
+        —with{" "}
+        <span className="font-bold">
+          occasional appearances from Kyle (CallofKyle)
+        </span> {" "}
+         on a few memorable episodes. They cover everything OGAT—updates, guides,
+        tournaments, and the legendary “Bug of the Week”. The show also brings
+        in a stellar lineup of guests, like CasualYoutuber31 (Madball expert
+        extraordinaire) and MeninisticTraplord (always ready with a spicy take),
+        to keep things fresh and completely off the rails.
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {chatData.map((video, index) => {
